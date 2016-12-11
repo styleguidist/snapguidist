@@ -4,9 +4,25 @@
   "description": "Snapshot testing for React Styleguidist",
   "main": "index.js",
   "repository": "https://github.com/MicheleBertoli/snapguidist.git",
+  "scripts": {
+    "test": "jest",
+    "lint": "eslint ./"
+  },
   "authors": [
     "Michele Bertoli",
     "Matteo Ronchi"
   ],
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^3.12.0",
+    "eslint-config-airbnb": "^13.0.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^2.2.3",
+    "eslint-plugin-react": "^6.8.0",
+    "fs-extra": "^1.0.0",
+    "jest": "^17.0.3"
+  },
+  "dependencies": {
+    "jest-snapshot": "^17.0.3"
+  }
 }
