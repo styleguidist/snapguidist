@@ -1,0 +1,12 @@
+{
+  "name": "snapguidist",
+  "version": "0.0.0",
+  "description": "Snapshot testing for React Styleguidist",
+  "main": "index.js",
+  "repository": "https://github.com/MicheleBertoli/snapguidist.git",
+  "authors": [
+    "Michele Bertoli",
+    "Matteo Ronchi"
+  ],
+  "license": "MIT"
+}
