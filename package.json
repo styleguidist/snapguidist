@@ -20,9 +20,13 @@
     "eslint-plugin-jsx-a11y": "^2.2.3",
     "eslint-plugin-react": "^6.8.0",
     "fs-extra": "^1.0.0",
-    "jest": "^17.0.3"
+    "jest": "^17.0.3",
+    "supertest": "^2.0.1",
+    "supertest-as-promised": "^4.0.2"
   },
   "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
     "jest-snapshot": "^17.0.3"
   }
 }
