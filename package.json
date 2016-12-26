@@ -1,12 +1,12 @@
 {
   "name": "snapguidist",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Snapshot testing for React Styleguidist",
-  "main": "index.js",
   "repository": "https://github.com/MicheleBertoli/snapguidist.git",
   "scripts": {
+    "start": "node ./src/server",
     "test": "jest",
-    "lint": "eslint ./"
+    "lint": "eslint --ignore-path .gitignore ./"
   },
   "authors": [
     "Michele Bertoli",
@@ -28,6 +28,10 @@
     "body-parser": "^1.15.2",
     "cors": "^2.8.1",
     "express": "^4.14.0",
-    "jest-snapshot": "^17.0.3"
+    "jest-snapshot": "^17.0.3",
+    "react-test-renderer": "^15.4.1"
+  },
+  "peerDependencies": {
+    "react-styleguidist": "^4.4.1"
   }
 }
