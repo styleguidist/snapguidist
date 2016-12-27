@@ -20,8 +20,8 @@ module.exports = {
 
     webpackConfig.resolve.modulesDirectories = ['./example/node_modules', './node_modules']
 
-    webpackConfig.resolve.alias['rsg-components/Playground/PlaygroundRenderer'] = path.join(__dirname, '../src/playground-renderer')
-    webpackConfig.resolve.alias['rsg-components/Preview'] = path.join(__dirname, '../src/preview')
+    webpackConfig.resolve.alias['rsg-components/Playground/PlaygroundRenderer'] = path.join(__dirname, '../src/client/playground-renderer')
+    webpackConfig.resolve.alias['rsg-components/Preview'] = path.join(__dirname, '../src/client/preview')
 
     return webpackConfig
   },

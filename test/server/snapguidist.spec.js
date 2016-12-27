@@ -1,5 +1,5 @@
 const fs = require('fs-extra')
-const snapguidist = require('../src/snapguidist')
+const snapguidist = require('../../src/server/snapguidist')
 
 beforeEach(() => {
   fs.emptyDirSync('./.snapguidist/__snapshots__')
