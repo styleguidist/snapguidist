@@ -30,7 +30,7 @@ class SnapguidistPreview extends Component {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        name: 'test',
+        name: this.context.name,
         tree: renderer.create(this.example).toJSON(),
       }),
     })
@@ -52,7 +52,12 @@ class SnapguidistPreview extends Component {
 }
 
 SnapguidistPreview.propTypes = {
-  evalInContext: PropTypes.func,
+  code: PropTypes.string.isRequired,
+  evalInContext: PropTypes.func.isRequired,
+}
+
+SnapguidistPreview.contextTypes = {
+  name: PropTypes.string.isRequired,
 }
 
 export default SnapguidistPreview
