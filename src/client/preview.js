@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react'
-import renderer from 'react-test-renderer'
 import Preview from 'react-styleguidist/src/rsg-components/Preview'
+import api from './api'
 import Test from './test'
 
 class SnapguidistPreview extends Component {
@@ -27,16 +27,9 @@ class SnapguidistPreview extends Component {
   runTest(update) {
     this.setState({ isFetching: true })
 
-    fetch('http://localhost:3001', {
-      method: update ? 'PUT' : 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        name: this.context.name,
-        tree: renderer.create(this.example).toJSON(),
-      }),
-    })
-    .then(response => response.json())
-    .then(response => this.setState({ response, isFetching: false }))
+    api
+      .runTest(this.context.name, this.example, update)
+      .then(response => this.setState({ response, isFetching: false }))
   }
 
   evalInContext(code) {
