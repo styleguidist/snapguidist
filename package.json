@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "description": "Snapshot testing for React Styleguidist",
   "repository": "https://github.com/MicheleBertoli/snapguidist.git",
+  "bin": "./bin/snapguidist.js",
   "scripts": {
     "start": "node ./src/server",
     "test": "jest",
