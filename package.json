@@ -15,6 +15,8 @@
     "build:components": "babel ./src/client --out-dir ./dist",
     "build:styles": "cssnano ./src/client/styles.css ./dist/styles.css",
     "build": "yarn run build:components && yarn run build:styles",
+    "clean": "rimraf ./dist",
+    "prebuild": "yarn run clean",
     "prepublish": "yarn run build",
     "dev": "node ./src/server"
   },
@@ -35,6 +37,7 @@
     "eslint-plugin-react": "^6.8.0",
     "fs-extra": "^1.0.0",
     "jest": "^17.0.3",
+    "rimraf": "^2.5.4",
     "supertest": "^2.0.1",
     "supertest-as-promised": "^4.0.2"
   },
