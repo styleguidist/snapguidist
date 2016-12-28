@@ -4,12 +4,18 @@
   "description": "Snapshot testing for React Styleguidist",
   "repository": "https://github.com/MicheleBertoli/snapguidist.git",
   "bin": "./bin/snapguidist.js",
+  "files": [
+    "bin",
+    "dist",
+    "src/server"
+  ],
   "scripts": {
     "test": "jest",
     "lint": "eslint --ignore-path .gitignore ./",
     "build:components": "babel ./src/client --out-dir ./dist",
     "build:styles": "cssnano ./src/client/styles.css ./dist/styles.css",
     "build": "yarn run build:components && yarn run build:styles",
+    "prepublish": "yarn run build",
     "dev": "node ./src/server"
   },
   "authors": [
