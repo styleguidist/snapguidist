@@ -1,6 +1,6 @@
 {
   "name": "snapguidist",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Snapshot testing for React Styleguidist",
   "repository": "https://github.com/MicheleBertoli/snapguidist.git",
   "bin": "./bin/snapguidist.js",
