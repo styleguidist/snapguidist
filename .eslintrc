@@ -1,13 +1,15 @@
 {
-  "root": true,
-
   "extends": "airbnb",
 
   "env": {
+    "browser": true,
     "jest": true
   },
 
   "rules": {
-    "semi": [2, "never"]
+    "semi": [2, "never"],
+    "no-param-reassign": [2, { "props": false }],
+    "react/jsx-filename-extension": [2, { "extensions": [".js"] }],
+    "import/no-extraneous-dependencies": [2, { "devDependencies": ["example/**/*", "test/**/*"] }]
   }
 }

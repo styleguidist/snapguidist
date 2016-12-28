@@ -1,8 +1,8 @@
-jest.mock('../src/snapguidist')
+jest.mock('../../src/server/snapguidist')
 
 const request = require('supertest-as-promised')
-const snapguidist = require('../src/snapguidist')
-const app = require('../src/app')
+const snapguidist = require('../../src/server/snapguidist')
+const app = require('../../src/server/app')
 
 test('calls snapguidist with name and tree', () => {
   const name = 'name'

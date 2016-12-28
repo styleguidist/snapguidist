@@ -1,0 +1,67 @@
+.ReactStyleguidist-Playground__preview {
+  margin-bottom: 0;
+}
+
+.snapguidist__test {
+  background: linear-gradient(to right, #888888, #c3c3c3);
+  box-sizing: border-box;
+  height: 0px;
+  margin: 15px -15px -15px;
+  padding: 2px 4px 4px;
+  transition: height 0.1s ease-out;
+}
+
+.snapguidist__test--pass {
+  background: linear-gradient(to right, #009f00, #00e300);
+}
+
+.snapguidist__test--fail {
+  background: linear-gradient(to right, #ff3d3d, #ffaeae);
+  height: 25px;
+}
+
+.snapguidist__test--expanded {
+  height: auto;
+}
+
+.snapguidist__button {
+  background-color: #fff;
+  border: 0;
+  color: #333;
+  cursor: pointer;
+  font-size: 11px;
+  margin-right: 4px;
+  outline: none;
+  text-transform: uppercase;
+  transition: opacity 0.1s;
+}
+
+.snapguidist__button:disabled {
+  opacity: 0.5;
+}
+
+.snapguidist__arrow {
+  display: inline-block;
+  transition: transform 0.1s;
+}
+
+.snapguidist__arrow--expanded {
+  transform: rotate(-180deg);
+}
+
+.snapguidist__label {
+  color: #333;
+  display: inline-block;
+  font-size: 11px;
+  margin-top: 4px;
+  text-transform: uppercase;
+}
+
+.snapguidist__code {
+  background-color: #333;
+  border-radius: 3px;
+  color: #fff;
+  display: block;
+  font-size: 12px;
+  padding: 4px;
+}
