@@ -29,8 +29,8 @@ module.exports = {
 
     webpackConfig.entry.push(path.join(__dirname, '../src/client/styles.css'))
 
-    webpackConfig.resolve.alias['rsg-components/Playground/PlaygroundRenderer'] = path.join(__dirname, '../src/client/playground-renderer')
-    webpackConfig.resolve.alias['rsg-components/Preview'] = path.join(__dirname, '../src/client/preview')
+    webpackConfig.resolve.alias['rsg-components/Playground/PlaygroundRenderer'] = path.join(__dirname, '../src/client/PlaygroundRenderer')
+    webpackConfig.resolve.alias['rsg-components/Preview'] = path.join(__dirname, '../src/client/Preview')
 
     return webpackConfig
   },

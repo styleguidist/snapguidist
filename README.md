@@ -38,7 +38,7 @@ However, if you are brave enough and want to give it a try, follow these steps:
       })
       webpackConfig.entry.push('snapguidist/dist/styles.css')
 
-      webpackConfig.resolve.alias['rsg-components/Playground/PlaygroundRenderer'] = 'snapguidist/dist/playground-renderer'
-      webpackConfig.resolve.alias['rsg-components/Preview'] = 'snapguidist/dist/preview'
+      webpackConfig.resolve.alias['rsg-components/Playground/PlaygroundRenderer'] = 'snapguidist/dist/PlaygroundRenderer'
+      webpackConfig.resolve.alias['rsg-components/Preview'] = 'snapguidist/dist/Preview'
     }
   ```

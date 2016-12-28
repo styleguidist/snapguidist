@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import Preview from 'react-styleguidist/src/rsg-components/Preview'
 import api from './api'
-import Test from './test'
+import Test from './Test'
 
 class SnapguidistPreview extends Component {
 
