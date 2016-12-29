@@ -82,7 +82,12 @@ class Test extends Component {
 Test.propTypes = {
   isFetching: PropTypes.bool,
   onClick: PropTypes.func,
-  response: PropTypes.object,
+  response: PropTypes.shape({
+    actual: PropTypes.string,
+    count: PropTypes.number,
+    expected: PropTypes.string,
+    pass: PropTypes.bool,
+  }),
 }
 
 export default Test

@@ -1,0 +1,8 @@
+{
+  "rules": {
+    "react/no-unused-prop-types": 0,
+    "import/no-extraneous-dependencies": 0,
+    "import/no-unresolved": [2, { ignore: ["^react", "classnames"] }],
+    "import/extensions": [2, "never"]
+  }
+}
