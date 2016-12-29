@@ -1,7 +1,7 @@
 [![Build Status](https://travis-ci.org/MicheleBertoli/snapguidist.svg?branch=master)](https://travis-ci.org/MicheleBertoli/snapguidist)
 
 # Snapguidist
-Snapshot testing for React Styleguidist.
+Snapshot testing for [React Styleguidist](https://github.com/styleguidist/react-styleguidist).
 
 # Demo
 
