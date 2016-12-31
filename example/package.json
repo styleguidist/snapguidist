@@ -6,11 +6,11 @@
     "styleguide-server": "styleguidist server"
   },
   "devDependencies": {
-    "babel-core": "^6.20.0",
-    "babel-loader": "^6.2.10",
-    "react": "^15.4.1",
-    "react-dom": "^15.4.1",
-    "react-styleguidist": "^4.4.1",
-    "webpack": "^1.14.0"
+    "babel-core": "6.20.0",
+    "babel-loader": "6.2.10",
+    "react": "15.4.1",
+    "react-dom": "15.4.1",
+    "react-styleguidist": "4.4.3",
+    "webpack": "1.14.0"
   }
 }
