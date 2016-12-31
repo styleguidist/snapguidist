@@ -2650,13 +2650,7 @@ on-finished@~2.3.0:
   dependencies:
     ee-first "1.1.1"
 
-once@^1.3.0, once@^1.3.3:
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/once/-/once-1.4.0.tgz#583b1aa775961d4b113ac17d9c50baef9dd76bd1"
-  dependencies:
-    wrappy "1"
-
-once@~1.3.3:
+once@^1.3.0, once@^1.3.3, once@~1.3.3:
   version "1.3.3"
   resolved "https://registry.yarnpkg.com/once/-/once-1.3.3.tgz#b2e261557ce4c314ec8304f3fa82663e4297ca20"
   dependencies:
@@ -3133,9 +3127,9 @@ react-group@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/react-group/-/react-group-1.0.1.tgz#b2a8d9eaa1a75f7c630df241bb80ad80a65de7fa"
 
-react-styleguidist@4.4.3:
-  version "4.4.3"
-  resolved "https://registry.yarnpkg.com/react-styleguidist/-/react-styleguidist-4.4.3.tgz#dbbb5177ebf52ea369fcdc216a0bc1486a11ab51"
+react-styleguidist@styleguidist/react-styleguidist#da1fd66:
+  version ""
+  resolved "https://codeload.github.com/styleguidist/react-styleguidist/tar.gz/da1fd66"
   dependencies:
     babel-core "6.18.2"
     babel-loader "6.2.7"
