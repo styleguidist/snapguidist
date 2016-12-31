@@ -1,6 +1,6 @@
 import React from 'react'
 import { shallow } from 'enzyme'
-import SnapguidistPlaygroundRenderer from '../../src/client/PlaygroundRenderer'
+import SnapguidistPlaygroundRenderer from '../../src/client/components/PlaygroundRenderer'
 
 jest.mock(
   'react-styleguidist/src/rsg-components/Playground/PlaygroundRenderer',

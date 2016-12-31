@@ -1,7 +1,7 @@
 import React from 'react'
 import { shallow, mount } from 'enzyme'
-import SnapguidistPreview from '../../src/client/Preview'
-import api from '../../src/client/api'
+import SnapguidistPreview from '../../src/client/components/Preview'
+import api from '../../src/client/api/api'
 
 jest.mock(
   'react-styleguidist/src/rsg-components/Preview',
@@ -14,7 +14,7 @@ jest.mock(
 const response = { pass: true }
 
 jest.mock(
-  '../../src/client/api',
+  '../../src/client/api/api',
   () => ({ runTest: jest.fn(() => ({ then: callback => callback({ pass: true }) })) }),
 )
 
