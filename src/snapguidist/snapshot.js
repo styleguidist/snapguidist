@@ -4,7 +4,7 @@ const path = require('path')
 const base = './.snapguidist/__snapshots__/'
 const typeOf = { value: Symbol.for('react.test.json') }
 
-const snapguidist = (name, tree, update) => {
+export default function snapshot(name, tree, update) {
   const destination = path.resolve(base, `${name}.snap`)
   const state = new SnapshotState(null, update, destination)
 
@@ -15,5 +15,3 @@ const snapguidist = (name, tree, update) => {
 
   return result
 }
-
-module.exports = snapguidist

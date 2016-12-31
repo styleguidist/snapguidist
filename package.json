@@ -6,16 +6,14 @@
   "bin": "./bin/snapguidist.js",
   "main": "./dist/snapguidist.js",
   "files": [
-    "bin",
-    "dist",
-    "src/server"
+    "dist"
   ],
   "scripts": {
     "test": "jest",
     "lint": "eslint --ignore-path .gitignore ./",
     "build:prepare": "mkdirp dist/styles",
-    "build:components": "babel ./src/client --out-dir ./dist",
-    "build:styles": "cssnano ./src/client/styles/styles.css ./dist/styles/styles.css",
+    "build:components": "babel ./src/ --out-dir ./dist",
+    "build:styles": "cssnano ./src/styles/styles.css ./dist/styles/styles.css",
     "build": "yarn run build:components && yarn run build:styles",
     "clean": "rimraf ./dist",
     "prebuild": "yarn run clean && yarn run build:prepare",
@@ -58,12 +56,15 @@
   },
   "dependencies": {
     "body-parser": "1.15.2",
+    "classnames": "2.2.5",
     "cors": "2.8.1",
     "express": "4.14.0",
     "jest-snapshot": "18.1.0",
     "react-test-renderer": "15.4.1"
   },
   "peerDependencies": {
+    "react": ">15",
+    "react-dom": ">15",
     "react-styleguidist": ">4.4.1",
     "webpack": "1.14.0"
   },

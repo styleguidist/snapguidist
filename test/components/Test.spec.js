@@ -2,7 +2,7 @@ import React from 'react'
 import renderer from 'react-test-renderer'
 import { shallow } from 'enzyme'
 import toJSON from 'enzyme-to-json'
-import Test from '../../src/client/components/Test'
+import Test from '../../src/components/Test'
 
 const props = {
   isFetching: false,

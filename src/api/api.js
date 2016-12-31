@@ -3,7 +3,11 @@ import renderer from 'react-test-renderer'
 const api = {
 
   runTest(name, example, update) {
-    return fetch('http://localhost:3001', {
+    const {
+      host = 'localhost',
+      port = 3000,
+    } = process.env.SNAPGUIDIST
+    return fetch(`http://${host}:${port}`, {
       method: update ? 'PUT' : 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -12,7 +16,7 @@ const api = {
       }),
     })
     .then(response => response.json())
-    .catch(() => console.warn('Ouch, is the Snapguidist server up?'))
+    .catch(() => console.warn('Ouch, is the Snapguidist server up?')) // eslint-disable-line
   },
 
 }

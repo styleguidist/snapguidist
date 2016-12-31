@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "license": "MIT",
   "scripts": {
-    "styleguide-server": "styleguidist server"
+    "start": "styleguidist server"
   },
   "devDependencies": {
     "babel-core": "6.20.0",

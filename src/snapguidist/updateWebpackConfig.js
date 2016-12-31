@@ -1,12 +1,13 @@
 import path from 'path'
+import webpack from 'webpack'
 
-const PLAYGROUND_RENDERER = 'rsg-components/Playground/PlaygroundRenderer'
-const PLAYGROUND_PREVIEW = 'rsg-components/Preview'
+const componentPath = component => path.join(__dirname, '..', 'components', component)
+const stylesPath = component => path.join(__dirname, '..', 'styles', component)
 
-const componentPath = component => path.join(__dirname, 'components', component)
-const stylesPath = component => path.join(__dirname, 'styles', component)
+export const PLAYGROUND_RENDERER = 'rsg-components/Playground/PlaygroundRenderer'
+export const PLAYGROUND_PREVIEW = 'rsg-components/Preview'
 
-export default function snapguidist(webpackConfig) {
+export default function updateWebpackConfig(webpackConfig, env, serverInfo) {
   webpackConfig.module.loaders.push(
     {
       test: /\.jsx?$/,
@@ -32,6 +33,11 @@ export default function snapguidist(webpackConfig) {
     [PLAYGROUND_RENDERER]: componentPath('PlaygroundRenderer'),
     [PLAYGROUND_PREVIEW]: componentPath('Preview'),
   })
+
+  const plugin = new webpack.DefinePlugin({
+    'process.env.SNAPGUIDIST': JSON.stringify(serverInfo),
+  })
+  webpackConfig.plugins.push(plugin)
 
   return webpackConfig
 }

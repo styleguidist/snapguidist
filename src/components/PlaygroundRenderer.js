@@ -16,8 +16,8 @@ class SnapguidistPlaygroundRenderer extends Component {
 }
 
 SnapguidistPlaygroundRenderer.propTypes = {
-  code: PropTypes.string.isRequired,
-  evalInContext: PropTypes.func.isRequired,
+  // code: PropTypes.string.isRequired,
+  // evalInContext: PropTypes.func.isRequired,
   index: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
 }
