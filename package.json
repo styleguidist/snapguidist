@@ -20,7 +20,9 @@
     "clean": "rimraf ./dist",
     "prebuild": "yarn run clean && yarn run build:prepare",
     "prepublish": "yarn run build",
-    "dev": "node ./src/server"
+    "dev": "node ./src/server",
+    "precommit": "opt --out pre-commit --exec 'yarn run lint-staged'",
+    "prepush": "opt --out pre-commit --exec 'yarn run lint-staged && yarn run test'"
   },
   "authors": [
     "Michele Bertoli",
@@ -41,8 +43,11 @@
     "eslint-plugin-jsx-a11y": "2.2.3",
     "eslint-plugin-react": "6.8.0",
     "fs-extra": "1.0.0",
+    "husky": "0.12.0",
     "jest": "18.1.0",
+    "lint-staged": "3.2.5",
     "mkdirp": "0.5.1",
+    "opt-cli": "1.5.1",
     "react": "15.4.1",
     "react-addons-test-utils": "15.4.1",
     "react-dom": "15.4.1",
@@ -61,5 +66,8 @@
   "peerDependencies": {
     "react-styleguidist": ">4.4.1",
     "webpack": "1.14.0"
+  },
+  "lint-staged": {
+    "*.js": "eslint"
   }
 }
