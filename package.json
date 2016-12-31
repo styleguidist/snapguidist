@@ -13,11 +13,12 @@
   "scripts": {
     "test": "jest",
     "lint": "eslint --ignore-path .gitignore ./",
+    "build:prepare": "mkdirp dist/styles",
     "build:components": "babel ./src/client --out-dir ./dist",
-    "build:styles": "cssnano ./src/client/styles.css ./dist/styles.css",
+    "build:styles": "cssnano ./src/client/styles/styles.css ./dist/styles/styles.css",
     "build": "yarn run build:components && yarn run build:styles",
     "clean": "rimraf ./dist",
-    "prebuild": "yarn run clean",
+    "prebuild": "yarn run clean && yarn run build:prepare",
     "prepublish": "yarn run build",
     "dev": "node ./src/server"
   },
@@ -41,6 +42,7 @@
     "eslint-plugin-react": "6.8.0",
     "fs-extra": "1.0.0",
     "jest": "18.1.0",
+    "mkdirp": "0.5.1",
     "react": "15.4.1",
     "react-addons-test-utils": "15.4.1",
     "react-dom": "15.4.1",
