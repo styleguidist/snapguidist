@@ -1,6 +1,6 @@
 jest.mock('../../src/server/snapguidist')
 
-const request = require('supertest-as-promised')
+const request = require('supertest')
 const snapguidist = require('../../src/server/snapguidist')
 const app = require('../../src/server/app')
 

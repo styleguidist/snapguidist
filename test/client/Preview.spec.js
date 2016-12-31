@@ -15,7 +15,7 @@ const response = { pass: true }
 
 jest.mock(
   '../../src/client/api',
-  () => ({ runTest: jest.fn(() => ({ then: callback => callback(response) })) }),
+  () => ({ runTest: jest.fn(() => ({ then: callback => callback({ pass: true }) })) }),
 )
 
 const props = { code: 'code', evalInContext: () => {} }
@@ -79,5 +79,5 @@ test('does not fire the api call on didUpdate, when code is the same', () => {
 test('passes the response to Test', () => {
   const wrapper = mount(<SnapguidistPreview {...props} />, options)
 
-  expect(wrapper.find('Test').prop('response')).toBe(response)
+  expect(wrapper.find('Test').prop('response')).toEqual(response)
 })
