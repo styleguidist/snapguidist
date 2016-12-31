@@ -4816,9 +4816,9 @@ react-group@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/react-group/-/react-group-1.0.1.tgz#b2a8d9eaa1a75f7c630df241bb80ad80a65de7fa"
 
-react-styleguidist@styleguidist/react-styleguidist#da1fd66:
+"react-styleguidist@git+https://github.com/styleguidist/react-styleguidist.git":
   version ""
-  resolved "https://codeload.github.com/styleguidist/react-styleguidist/tar.gz/da1fd66"
+  resolved "git+https://github.com/styleguidist/react-styleguidist.git#da1fd6685419f4374cbbaed34ae9cb9f9e8021d3"
   dependencies:
     babel-core "6.18.2"
     babel-loader "6.2.7"

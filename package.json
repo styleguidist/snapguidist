@@ -49,7 +49,7 @@
     "react": "15.4.1",
     "react-addons-test-utils": "15.4.1",
     "react-dom": "15.4.1",
-    "react-styleguidist": "styleguidist/react-styleguidist#da1fd66",
+    "react-styleguidist": "git+https://github.com/styleguidist/react-styleguidist.git",
     "rimraf": "2.5.4",
     "supertest": "2.0.1",
     "webpack": "1.14.0"
