@@ -2,3 +2,5 @@ dist
 node_modules
 .snapguidist/
 npm-debug.log
+.opt.in
+.opt-out
