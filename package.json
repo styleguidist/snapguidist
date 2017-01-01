@@ -19,7 +19,7 @@
     "prepublish": "yarn run build",
     "dev": "node ./src/server",
     "precommit": "opt --out pre-commit --exec 'yarn run lint-staged'",
-    "prepush": "opt --out pre-commit --exec 'yarn run lint-staged && yarn run test'"
+    "prepush": "opt --out pre-push --exec 'yarn run lint-staged && yarn run test'"
   },
   "authors": [
     "Michele Bertoli",
