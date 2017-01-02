@@ -2,7 +2,7 @@ import path from 'path'
 import webpack from 'webpack'
 
 const componentPath = component => path.join(__dirname, '..', 'components', component)
-const stylesPath = component => path.join(__dirname, '..', 'styles', component)
+const stylesPath = style => path.join(__dirname, '..', style)
 
 export const PLAYGROUND_RENDERER = 'rsg-components/Playground/PlaygroundRenderer'
 export const PLAYGROUND_PREVIEW = 'rsg-components/Preview'
