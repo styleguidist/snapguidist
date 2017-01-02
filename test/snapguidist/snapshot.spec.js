@@ -1,5 +1,5 @@
 import fs from 'fs-extra'
-import snapshot from '../../src/snapguidist/snapshot'
+import snapshot from '../../src/core/snapshot'
 
 beforeEach(() => {
   fs.emptyDirSync('./.snapguidist/__snapshots__')

@@ -1,5 +1,5 @@
-import updateWebpackConfig from './snapguidist/updateWebpackConfig'
-import configureServer from './snapguidist/configureServer'
+import updateWebpackConfig from './core/updateWebpackConfig'
+import configureServer from './core/configureServer'
 
 export default function snapguidist(config = {}) {
   const serverInfo = {

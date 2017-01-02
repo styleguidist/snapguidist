@@ -1,4 +1,4 @@
-const snapguidist = require('../dist/snapguidist').default
+const snapguidist = require('../dist/index').default
 
 module.exports = snapguidist({
   title: 'My Great Style Guide',
