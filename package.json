@@ -49,7 +49,7 @@
     "react": "15.4.1",
     "react-addons-test-utils": "15.4.1",
     "react-dom": "15.4.1",
-    "react-styleguidist": "git+https://github.com/styleguidist/react-styleguidist.git",
+    "react-styleguidist": "4.5.0",
     "rimraf": "2.5.4",
     "supertest": "2.0.1",
     "webpack": "1.14.0"
@@ -65,7 +65,7 @@
   "peerDependencies": {
     "react": ">15",
     "react-dom": ">15",
-    "react-styleguidist": ">4.4.1",
+    "react-styleguidist": ">=4.5",
     "webpack": "1.14.0"
   },
   "lint-staged": {
