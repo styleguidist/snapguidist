@@ -1,32 +1,42 @@
-import path from 'path'
-import webpack from 'webpack'
+const path = require('path')
+const webpack = require('webpack')
 
-const componentPath = component => path.join(__dirname, '..', 'components', component)
-const stylesPath = style => path.join(__dirname, '..', style)
+let base = path.join(process.cwd(), 'node_modules', 'snapguidist')
+if (process.env.SNAPGUIDIST_MODE === 'dev') {
+  base = process.cwd()
+}
+const componentPath = component => path.join(base, 'src', 'components', component)
+const stylesPath = style => path.join(base, 'src', style)
 
-export const PLAYGROUND_RENDERER = 'rsg-components/Playground/PlaygroundRenderer'
-export const PLAYGROUND_PREVIEW = 'rsg-components/Preview'
+const PLAYGROUND_RENDERER = 'rsg-components/Playground/PlaygroundRenderer'
+const PLAYGROUND_PREVIEW = 'rsg-components/Preview'
 
-export default function updateWebpackConfig(webpackConfig, env, serverInfo) {
+function updateWebpackConfig(webpackConfig, env, serverInfo) {
+  const includePaths = [
+    path.join(base, 'src'),
+  ]
+
   webpackConfig.module.loaders.push(
     {
       test: /\.jsx?$/,
-      exclude: /node_modules/,
+      include: includePaths,
       loader: 'babel',
       query: {
         presets: [
           'babel-preset-es2015',
           'babel-preset-react',
+          'babel-preset-stage-0',
         ].map(require.resolve),
       },
     },
     {
       test: /\.css$/,
-      exclude: /node_modules/,
+      include: includePaths,
       loaders: ['style', 'css'],
-    },
+    }
   )
 
+  // TODO: should be avoided to add style.css as last item in `entry`?
   webpackConfig.entry.push(stylesPath('styles.css'))
 
   Object.assign(webpackConfig.resolve.alias, {
@@ -34,10 +44,11 @@ export default function updateWebpackConfig(webpackConfig, env, serverInfo) {
     [PLAYGROUND_PREVIEW]: componentPath('Preview'),
   })
 
-  const plugin = new webpack.DefinePlugin({
+  webpackConfig.plugins.push(new webpack.DefinePlugin({
     'process.env.SNAPGUIDIST': JSON.stringify(serverInfo),
-  })
-  webpackConfig.plugins.push(plugin)
+  }))
 
   return webpackConfig
 }
+
+module.exports = updateWebpackConfig
