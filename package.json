@@ -3,11 +3,12 @@
   "version": "0.1.3",
   "description": "Snapshot testing for React Styleguidist",
   "repository": "https://github.com/MicheleBertoli/snapguidist.git",
-  "main": "./dist/index.js",
+  "main": "./src/index.js",
   "files": [
-    "dist"
+    "src"
   ],
   "scripts": {
+    "start": "cross-env SNAPGUIDIST_MODE='dev' styleguidist server --config example/styleguide.config.js",
     "test": "jest",
     "lint": "eslint --ignore-path .gitignore ./",
     "build:components": "babel ./src/ --out-dir ./dist",
@@ -16,7 +17,6 @@
     "clean": "rimraf ./dist",
     "prebuild": "yarn run clean",
     "prepublish": "yarn run build",
-    "dev": "node ./src/server",
     "precommit": "opt --out pre-commit --exec 'yarn run lint-staged'",
     "prepush": "opt --out pre-push --exec 'yarn run lint-staged && yarn run test'"
   },
