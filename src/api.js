@@ -7,7 +7,7 @@ const api = {
       host = 'localhost',
       port = 3000,
     } = process.env.SNAPGUIDIST
-    return fetch(`http://${host}:${port}`, {
+    return fetch(`http://${host}:${port}/snapguidist`, {
       method: update ? 'PUT' : 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
