@@ -37,12 +37,12 @@ class Test extends Component {
       'snapguidist__test',
       { 'snapguidist__test--pass': this.isPass() },
       { 'snapguidist__test--fail': this.isFail() },
-      { 'snapguidist__test--expanded': this.state.expanded },
+      { 'snapguidist__test--expanded': this.state.expanded }
     )
 
     const arrowClasses = classnames(
       'snapguidist__arrow',
-      { 'snapguidist__arrow--expanded': this.state.expanded },
+      { 'snapguidist__arrow--expanded': this.state.expanded }
     )
 
     return (

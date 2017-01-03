@@ -1,7 +1,7 @@
-import updateWebpackConfig from './core/updateWebpackConfig'
-import configureServer from './core/configureServer'
+const updateWebpackConfig = require('./core/updateWebpackConfig')
+const configureServer = require('./core/configureServer')
 
-export default function snapguidist(config = {}) {
+function snapguidist(config = {}) {
   const serverInfo = {
     host: config.serverHost || 'localhost',
     port: config.serverPort || 3000,
@@ -29,6 +29,8 @@ export default function snapguidist(config = {}) {
           _configureServer(app, env)
         }
       },
-    },
+    }
   )
 }
+
+module.exports = snapguidist

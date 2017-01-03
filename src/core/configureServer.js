@@ -1,8 +1,8 @@
-import bodyParser from 'body-parser'
-import cors from 'cors'
-import snapshot from './snapshot'
+const bodyParser = require('body-parser')
+const cors = require('cors')
+const snapshot = require('./snapshot')
 
-export default function configureServer(app) {
+function configureServer(app) {
   app.use(cors())
   app.use(bodyParser.json())
 
@@ -19,3 +19,4 @@ export default function configureServer(app) {
     res.send(result)
   })
 }
+module.exports = configureServer
