@@ -8,7 +8,7 @@
     "src"
   ],
   "scripts": {
-    "start": "cross-env SNAPGUIDIST_MODE='dev' styleguidist server --config example/styleguide.config.js",
+    "start": "styleguidist server --config example/styleguide.config.dev.js",
     "test": "jest",
     "lint": "eslint --ignore-path .gitignore ./",
     "precommit": "opt --out pre-commit --exec 'yarn run lint-staged'",
