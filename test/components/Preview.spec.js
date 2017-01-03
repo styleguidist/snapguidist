@@ -8,14 +8,14 @@ jest.mock(
   () => {
     const Preview = () => null
     return Preview
-  },
+  }
 )
 
 const response = { pass: true }
 
 jest.mock(
   '../../src/api',
-  () => ({ runTest: jest.fn(() => ({ then: callback => callback({ pass: true }) })) }),
+  () => ({ runTest: jest.fn(() => ({ then: callback => callback({ pass: true }) })) })
 )
 
 const props = { code: 'code', evalInContext: () => {} }

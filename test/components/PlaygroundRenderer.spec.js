@@ -7,7 +7,7 @@ jest.mock(
   () => {
     const PlaygroundRenderer = () => null
     return PlaygroundRenderer
-  },
+  }
 )
 
 const props = {
