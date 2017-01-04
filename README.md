@@ -5,7 +5,7 @@ Snapshot testing for [React Styleguidist](https://github.com/styleguidist/react-
 
 # Demo
 
-![Demo](assets/demo.gif)
+![Demo](demo.gif)
 
 # Getting Started
 
@@ -68,7 +68,7 @@ yarn start
 
 # Development
 
-If you want contribute to `snapguidist`, please start the example from the root folder to enable the *hot-reload*:
+If you want contribute to `snapguidist`, start the example from the root folder to enable the *hot-reload*:
 
 ```bash
 yarn start

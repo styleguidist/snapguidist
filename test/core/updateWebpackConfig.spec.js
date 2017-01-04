@@ -1,9 +1,12 @@
 import path from 'path'
 import updateWebpackConfig from '../../src/core/updateWebpackConfig'
 
-jest.mock('webpack', () => ({
-  DefinePlugin(data) { return { definitions: data } },
-}))
+jest.mock(
+  'webpack',
+  () => ({
+    DefinePlugin(data) { return { definitions: data } },
+  })
+)
 
 const srcFolder = path.join(__dirname, '..', '..')
 
@@ -15,7 +18,6 @@ test('enhances the webpack configuration', () => {
     plugins: [],
   }
   const serverInfo = 'serverInfo'
-
   const expected = {
     entry: [`${srcFolder}/src/styles.css`],
 

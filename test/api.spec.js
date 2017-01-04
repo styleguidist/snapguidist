@@ -1,6 +1,7 @@
 import api from '../src/api'
 
-jest.mock('react-test-renderer',
+jest.mock(
+  'react-test-renderer',
   () => ({ create: example => ({ toJSON: () => example }) })
 )
 
@@ -13,7 +14,7 @@ process.env.SNAPGUIDIST = {}
 const name = 'name'
 const example = 'example'
 
-test('calls POST when update is false', () => {
+test('fires a POST when update is false', () => {
   const update = false
   api.runTest(name, example, update)
 
@@ -29,7 +30,7 @@ test('calls POST when update is false', () => {
   )
 })
 
-test('calls PUT when update is true', () => {
+test('fires a PUT when update is true', () => {
   const update = true
   api.runTest(name, example, update)
 
