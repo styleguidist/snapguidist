@@ -1,21 +1,21 @@
 import React from 'react'
 import { shallow, mount } from 'enzyme'
-import SnapguidistPreview from '../../src/client/Preview'
-import api from '../../src/client/api'
+import SnapguidistPreview from '../../src/components/Preview'
+import api from '../../src/api'
 
 jest.mock(
   'react-styleguidist/src/rsg-components/Preview',
   () => {
     const Preview = () => null
     return Preview
-  },
+  }
 )
 
 const response = { pass: true }
 
 jest.mock(
-  '../../src/client/api',
-  () => ({ runTest: jest.fn(() => ({ then: callback => callback(response) })) }),
+  '../../src/api',
+  () => ({ runTest: jest.fn(() => ({ then: callback => callback({ pass: true }) })) })
 )
 
 const props = { code: 'code', evalInContext: () => {} }
@@ -79,5 +79,5 @@ test('does not fire the api call on didUpdate, when code is the same', () => {
 test('passes the response to Test', () => {
   const wrapper = mount(<SnapguidistPreview {...props} />, options)
 
-  expect(wrapper.find('Test').prop('response')).toBe(response)
+  expect(wrapper.find('Test').prop('response')).toEqual(response)
 })

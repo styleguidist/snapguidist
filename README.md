@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/MicheleBertoli/snapguidist.svg?branch=master)](https://travis-ci.org/MicheleBertoli/snapguidist)
+[![npm version](https://badge.fury.io/js/snapguidist.svg)](https://badge.fury.io/js/snapguidist) [![Build Status](https://travis-ci.org/MicheleBertoli/snapguidist.svg?branch=master)](https://travis-ci.org/MicheleBertoli/snapguidist)
 
 # Snapguidist
 Snapshot testing for [React Styleguidist](https://github.com/styleguidist/react-styleguidist).
@@ -9,9 +9,7 @@ Snapshot testing for [React Styleguidist](https://github.com/styleguidist/react-
 
 # Getting Started
 
-:warning: This package is a proof of concept.
-
-However, if you are brave enough and want to give it a try, follow these steps:
+To add `snapguidist` to your `react-styleguidist` configuration, follow these steps:
 
 1. install the package using yarn or npm:
 
@@ -19,26 +17,59 @@ However, if you are brave enough and want to give it a try, follow these steps:
   yarn add --dev snapguidist
   ```
 
-2. add the script to the `package.json`:
+2. enhance the webpack configuration in `styleguide.config.js`:
 
-  ```json
-    "scripts": {
-      "snapguidist": "snapguidist"
-    }
-  ```
+    ```javascript
+    const path = require('path')
+    const snapguidist = require('snapguidist')
 
-3. add the webpack configuration to the `styleguide.config.js`:
+    module.exports = snapguidist({
+      title: 'Snapguidist Styleguide',
 
-  ```javascript
-    if (env === 'development') {
-      webpackConfig.module.loaders.push({
-        test: /\.css$/,
-        include: path.resolve(__dirname, 'node_modules/snapguidist'),
-        loaders: ['style', 'css'],
-      })
-      webpackConfig.entry.push('snapguidist/dist/styles.css')
+      components: 'src/components/**/[A-Z]*.js',
 
-      webpackConfig.resolve.alias['rsg-components/Playground/PlaygroundRenderer'] = 'snapguidist/dist/PlaygroundRenderer'
-      webpackConfig.resolve.alias['rsg-components/Preview'] = 'snapguidist/dist/Preview'
-    }
-  ```
+      updateWebpackConfig(webpackConfig) {
+        const sourceFolder = path.resolve(__dirname, 'src')
+
+        webpackConfig.module.loaders.push({
+          test: /\.jsx?$/,
+          include: sourceFolder,
+          loader: 'babel',
+        })
+
+        return webpackConfig
+      },
+    })
+    ```
+
+## Caveats
+
+This is the first release of `snapguidist`, should you experience any issue please let us know.
+
+The package overrides a few `rsg` components from `react-styleguidist`:
+
+ * `rsg-components/Playground/PlaygroundRenderer`
+ * `rsg-components/Preview`
+
+Therefore, you won't be able to override them again in your project.
+
+We are working with [@sapegin](https://github.com/sapegin/) (the author of `react-styleguist`) to find a solution.
+
+# Example
+
+To run the example, install the dependencies and start it:
+
+```bash
+cd example
+yarn install
+yarn start
+```
+
+# Development
+
+If you want contribute to `snapguidist`, please start the example from the root folder to enable the *hot-reload*:
+
+```bash
+yarn start
+```
+
