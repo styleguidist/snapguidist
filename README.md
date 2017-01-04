@@ -5,7 +5,7 @@ Snapshot testing for [React Styleguidist](https://github.com/styleguidist/react-
 
 # Demo
 
-![Demo](demo.gif)
+![Demo](assets/demo.gif)
 
 # Getting Started
 
@@ -19,18 +19,18 @@ To add `snapguidist` to your `react-styleguidist` configuration, follow these st
 
 2. enhance the webpack configuration in `styleguide.config.js`:
 
-    ```javascript
-    const path = require('path')
-    const snapguidist = require('snapguidist')
+    ```diff
+     const path = require('path')
+    +const snapguidist = require('snapguidist')
 
-    module.exports = snapguidist({
+    -module.exports = {
+    +module.exports = snapguidist({
       title: 'Snapguidist Styleguide',
 
       components: 'src/components/**/[A-Z]*.js',
 
       updateWebpackConfig(webpackConfig) {
         const sourceFolder = path.resolve(__dirname, 'src')
-
         webpackConfig.module.loaders.push({
           test: /\.jsx?$/,
           include: sourceFolder,
@@ -39,7 +39,8 @@ To add `snapguidist` to your `react-styleguidist` configuration, follow these st
 
         return webpackConfig
       },
-    })
+    -}
+    +})
     ```
 
 ## Caveats
