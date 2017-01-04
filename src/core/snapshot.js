@@ -4,7 +4,7 @@ const path = require('path')
 const base = './.snapguidist/__snapshots__/'
 const typeOf = { value: Symbol.for('react.test.json') }
 
-function snapshot(name, tree, update) {
+const snapshot = (name, tree, update) => {
   const destination = path.resolve(base, `${name}.snap`)
   const state = new SnapshotState(null, update, destination)
 

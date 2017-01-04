@@ -19,18 +19,18 @@ To add `snapguidist` to your `react-styleguidist` configuration, follow these st
 
 2. enhance the webpack configuration in `styleguide.config.js`:
 
-    ```javascript
-    const path = require('path')
-    const snapguidist = require('snapguidist')
+    ```diff
+     const path = require('path')
+    +const snapguidist = require('snapguidist')
 
-    module.exports = snapguidist({
+    -module.exports = {
+    +module.exports = snapguidist({
       title: 'Snapguidist Styleguide',
 
       components: 'src/components/**/[A-Z]*.js',
 
       updateWebpackConfig(webpackConfig) {
         const sourceFolder = path.resolve(__dirname, 'src')
-
         webpackConfig.module.loaders.push({
           test: /\.jsx?$/,
           include: sourceFolder,
@@ -39,7 +39,8 @@ To add `snapguidist` to your `react-styleguidist` configuration, follow these st
 
         return webpackConfig
       },
-    })
+    -}
+    +})
     ```
 
 ## Caveats
@@ -67,7 +68,7 @@ yarn start
 
 # Development
 
-If you want contribute to `snapguidist`, please start the example from the root folder to enable the *hot-reload*:
+If you want contribute to `snapguidist`, start the example from the root folder to enable the *hot-reload*:
 
 ```bash
 yarn start

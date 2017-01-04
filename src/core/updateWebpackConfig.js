@@ -8,7 +8,7 @@ const stylesPath = style => path.join(srcFolder, style)
 const PLAYGROUND_RENDERER = 'rsg-components/Playground/PlaygroundRenderer'
 const PLAYGROUND_PREVIEW = 'rsg-components/Preview'
 
-function updateWebpackConfig(webpackConfig, env, serverInfo) {
+const updateWebpackConfig = (webpackConfig, env, serverInfo) => {
   webpackConfig.module.loaders.push(
     {
       test: /\.jsx?$/,
