@@ -2,7 +2,7 @@ const bodyParser = require('body-parser')
 const cors = require('cors')
 const snapshot = require('./snapshot')
 
-function configureServer(app) {
+const configureServer = (app) => {
   app.use(cors())
   app.use(bodyParser.json())
 
@@ -19,4 +19,5 @@ function configureServer(app) {
     res.send(result)
   })
 }
+
 module.exports = configureServer
