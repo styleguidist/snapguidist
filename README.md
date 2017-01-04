@@ -9,7 +9,7 @@ Snapshot testing for [React Styleguidist](https://github.com/styleguidist/react-
 
 # Getting Started
 
-To add **snapguidist** to your `react-styleguidist` configuration follow these steps:
+To add `snapguidist` to your `react-styleguidist` configuration, follow these steps:
 
 1. install the package using yarn or npm:
 
@@ -17,14 +17,13 @@ To add **snapguidist** to your `react-styleguidist` configuration follow these s
   yarn add --dev snapguidist
   ```
 
-2. enhance the webpack configuration of `styleguide.config.js`:
+2. enhance the webpack configuration in `styleguide.config.js`:
 
     ```javascript
     const path = require('path')
     const snapguidist = require('snapguidist')
 
     module.exports = snapguidist({
-
       title: 'Snapguidist Styleguide',
 
       components: 'src/components/**/[A-Z]*.js',
@@ -45,26 +44,30 @@ To add **snapguidist** to your `react-styleguidist` configuration follow these s
 
 ## Caveats
 
-This is the first release of `snapguidist`, if you encounter any issue please report it to us!
+This is the first release of `snapguidist`, should you experience any issue please let us know.
 
-**snapguidist** needs to override some `rsg` components of `react-styleguidist`, currently you can't override them yourself. The components are:
- * rsg-components/Playground/PlaygroundRenderer
- * rsg-components/Preview
+The package overrides a few `rsg` components from `react-styleguidist`:
 
-We are already working with [@sapegin](https://github.com/sapegin/), the author of `react-styleguist`, to resolve this issue.
+ * `rsg-components/Playground/PlaygroundRenderer`
+ * `rsg-components/Preview`
+
+Therefore, you won't be able to override them again in your project.
+
+We are working with [@sapegin](https://github.com/sapegin/) (the author of `react-styleguist`) to find a solution.
 
 # Example
 
-To run the example install its dependencies and start it:
+To run the example, install the dependencies and start it:
 
 ```bash
-cd example/
+cd example
 yarn install
 yarn start
 ```
-# Snapguidist Development
 
-If you want contribute to `snapguidist` the example can be started with *hot-reload* enabled for a better Developer Experience, to do it just run:
+# Development
+
+If you want contribute to `snapguidist`, please start the example from the root folder to enable the *hot-reload*:
 
 ```bash
 yarn start
