@@ -16,9 +16,8 @@ function updateWebpackConfig(webpackConfig, env, serverInfo) {
       loader: 'babel',
       query: {
         presets: [
-          'babel-preset-es2015',
-          'babel-preset-react',
-          'babel-preset-stage-0',
+          'es2015',
+          'react',
         ],
       },
     },
@@ -29,7 +28,6 @@ function updateWebpackConfig(webpackConfig, env, serverInfo) {
     }
   )
 
-  // TODO: should be avoided to add style.css as last item in `entry`?
   webpackConfig.entry.push(stylesPath('styles.css'))
 
   Object.assign(webpackConfig.resolve.alias, {

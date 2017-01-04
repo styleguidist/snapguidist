@@ -1,9 +1,8 @@
 const path = require('path')
 const snapguidist = require(path.join(__dirname, '..', 'src', 'index'))
 
-
 module.exports = snapguidist({
-  title: 'Snapguidist Development Example',
+  title: '[dev] Snapguidist Styleguide',
 
   components: 'src/components/**/[A-Z]*.js',
 

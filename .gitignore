@@ -1,6 +1,5 @@
-dist
-node_modules
-.snapguidist/
-npm-debug.log
 .opt.in
 .opt-out
+.snapguidist
+node_modules
+npm-debug.log
