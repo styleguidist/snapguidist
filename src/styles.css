@@ -7,6 +7,7 @@
   box-sizing: border-box;
   height: 0px;
   margin: 15px -15px -15px;
+  overflow: hidden;
   padding: 2px 4px 4px;
   transition: height 0.1s ease-out;
 }
