@@ -1,7 +1,7 @@
 import runTest from './runTest'
 import pubSubFactory from './pubSubFactory'
 
-export default function testQueueFactory(size = 3) {
+export default function testQueueFactory(size = 1) {
   const pubSub = pubSubFactory()
   const { clearListeners, listen, notify } = pubSub
 
@@ -25,7 +25,7 @@ export default function testQueueFactory(size = 3) {
         done,
         value: {
           name,
-          example,
+          snapshot,
           update,
         } = {},
       } = queueIterator.next()
@@ -43,10 +43,10 @@ export default function testQueueFactory(size = 3) {
         // run the test and add it to the `running` queue
         running.set(
           name,
-          runTest(name, example, update)
+          runTest(snapshot, update)
           .then((response) => {
             // notify listenrs of test completion
-            notify({ response, name, example, update })
+            notify({ response, name, snapshot, update })
 
             // try to move the queue forward
             moveQueueForward()
@@ -60,10 +60,10 @@ export default function testQueueFactory(size = 3) {
     }
   }
 
-  const addTest = (name, example, update) => {
+  const addTest = (name, snapshot, update) => {
     // Add the request to the queue,
     // it'll overwrite queued values to avoid unnecessary test execution
-    queue.set(name, { name, example, update })
+    queue.set(name, { name, snapshot, update })
 
     // initialize the iterator if is not already available
     if (!queueIterator) {
