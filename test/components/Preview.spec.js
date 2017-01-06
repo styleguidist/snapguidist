@@ -22,6 +22,7 @@ const runTest = jest.fn(() => {
   }
   return { isQueuing: true }
 })
+
 const getOptions = snapguidist => ({
   context: {
     name: 'name',
