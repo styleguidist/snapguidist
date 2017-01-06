@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import classnames from 'classnames'
+import Code from './Code'
 
 class Test extends Component {
 
@@ -66,10 +67,15 @@ class Test extends Component {
               </button>
             </div>
             <div>
-              <div className="ReactStyleguidist-common__font snapguidist__label">Actual</div>
-              <code className="snapguidist__code">{this.props.response.actual}</code>
-              <div className="ReactStyleguidist-common__font snapguidist__label">Expected</div>
-              <code className="snapguidist__code">{this.props.response.expected}</code>
+              {this.props.response.diff
+                ? <Code diff label="Difference" value={this.props.response.diff} />
+                : (
+                  <div>
+                    <Code label="Actual" value={this.props.response.actual} />
+                    <Code label="Expected" value={this.props.response.expected} />
+                  </div>
+                )
+              }
             </div>
           </div>
         }
@@ -85,6 +91,7 @@ Test.propTypes = {
   response: PropTypes.shape({
     actual: PropTypes.string,
     count: PropTypes.number,
+    diff: PropTypes.string,
     expected: PropTypes.string,
     pass: PropTypes.bool,
   }),

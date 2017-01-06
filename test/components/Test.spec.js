@@ -22,18 +22,22 @@ test('works when pass', () => {
   expect(tree).toMatchSnapshot()
 })
 
-test('works when fail', () => {
-  const component = renderer.create(<Test {...props} />)
-  const tree = component.toJSON()
+test('works when fail, with diff', () => {
+  const wrapper = shallow(<Test {...props} />)
 
-  expect(tree).toMatchSnapshot()
+  expect(toJSON(wrapper)).toMatchSnapshot()
+})
+
+test('works when fail, without diff)', () => {
+  const wrapper = shallow(<Test {...props} response={{ diff: 'diff' }} />)
+
+  expect(toJSON(wrapper)).toMatchSnapshot()
 })
 
 test('works when is fetching', () => {
-  const component = renderer.create(<Test {...props} isFetching />)
-  const tree = component.toJSON()
+  const wrapper = shallow(<Test {...props} isFetching />)
 
-  expect(tree).toMatchSnapshot()
+  expect(toJSON(wrapper)).toMatchSnapshot()
 })
 
 test('works on update', () => {

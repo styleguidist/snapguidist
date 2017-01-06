@@ -19,7 +19,11 @@ test('enhances the webpack configuration', () => {
   }
   const serverInfo = 'serverInfo'
   const expected = {
-    entry: [`${srcFolder}/src/styles.css`],
+    entry: [
+      `${srcFolder}/src/styles.css`,
+      'codemirror/lib/codemirror.css',
+      'rsg-codemirror-theme.css',
+    ],
 
     module: {
       loaders: [{

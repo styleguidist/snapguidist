@@ -20,22 +20,14 @@ exports[`test works on toggle 1`] = `
       </button>
     </div>
     <div>
-      <div
-        className="ReactStyleguidist-common__font snapguidist__label">
-        Actual
+      <div>
+        <Code
+          label="Actual"
+          value="actual" />
+        <Code
+          label="Expected"
+          value="expected" />
       </div>
-      <code
-        className="snapguidist__code">
-        actual
-      </code>
-      <div
-        className="ReactStyleguidist-common__font snapguidist__label">
-        Expected
-      </div>
-      <code
-        className="snapguidist__code">
-        expected
-      </code>
     </div>
   </div>
 </div>
@@ -63,28 +55,20 @@ exports[`test works on update 1`] = `
       </button>
     </div>
     <div>
-      <div
-        className="ReactStyleguidist-common__font snapguidist__label">
-        Actual
+      <div>
+        <Code
+          label="Actual"
+          value="actual" />
+        <Code
+          label="Expected"
+          value="expected" />
       </div>
-      <code
-        className="snapguidist__code">
-        actual
-      </code>
-      <div
-        className="ReactStyleguidist-common__font snapguidist__label">
-        Expected
-      </div>
-      <code
-        className="snapguidist__code">
-        expected
-      </code>
     </div>
   </div>
 </div>
 `;
 
-exports[`test works when fail 1`] = `
+exports[`test works when fail, with diff 1`] = `
 <div
   className="snapguidist__test snapguidist__test--fail">
   <div>
@@ -106,22 +90,45 @@ exports[`test works when fail 1`] = `
       </button>
     </div>
     <div>
-      <div
-        className="ReactStyleguidist-common__font snapguidist__label">
-        Actual
+      <div>
+        <Code
+          label="Actual"
+          value="actual" />
+        <Code
+          label="Expected"
+          value="expected" />
       </div>
-      <code
-        className="snapguidist__code">
-        actual
-      </code>
-      <div
-        className="ReactStyleguidist-common__font snapguidist__label">
-        Expected
-      </div>
-      <code
-        className="snapguidist__code">
-        expected
-      </code>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`test works when fail, without diff) 1`] = `
+<div
+  className="snapguidist__test snapguidist__test--fail">
+  <div>
+    <div>
+      <button
+        className="snapguidist__button"
+        disabled={false}
+        onClick={[Function]}>
+        Update
+      </button>
+      <button
+        className="snapguidist__button"
+        disabled={false}
+        onClick={[Function]}>
+        <span
+          className="snapguidist__arrow">
+          ▼
+        </span>
+      </button>
+    </div>
+    <div>
+      <Code
+        diff={true}
+        label="Difference"
+        value="diff" />
     </div>
   </div>
 </div>
@@ -149,22 +156,14 @@ exports[`test works when is fetching 1`] = `
       </button>
     </div>
     <div>
-      <div
-        className="ReactStyleguidist-common__font snapguidist__label">
-        Actual
+      <div>
+        <Code
+          label="Actual"
+          value="actual" />
+        <Code
+          label="Expected"
+          value="expected" />
       </div>
-      <code
-        className="snapguidist__code">
-        actual
-      </code>
-      <div
-        className="ReactStyleguidist-common__font snapguidist__label">
-        Expected
-      </div>
-      <code
-        className="snapguidist__code">
-        expected
-      </code>
     </div>
   </div>
 </div>

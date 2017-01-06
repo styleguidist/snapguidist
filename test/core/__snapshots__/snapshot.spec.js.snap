@@ -1,0 +1,21 @@
+exports[`test fails if the type changes 1`] = `
+Object {
+  "actual": "<span>
+  <span />
+</span>",
+  "count": 1,
+  "diff": "- Expected
++ Received
+
+
+- <div>
++ <span>
+    <span />
+- </div>
++ </span>",
+  "expected": "<div>
+  <span />
+</div>",
+  "pass": false,
+}
+`;

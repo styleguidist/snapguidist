@@ -47,11 +47,15 @@
     "body-parser": "1.15.2",
     "classnames": "2.2.5",
     "cors": "2.8.1",
+    "jest-diff": "18.1.0",
     "jest-snapshot": "18.1.0",
-    "react-test-renderer": "15.4.1"
+    "react-test-renderer": "15.4.1",
+    "strip-ansi": "3.0.1"
   },
   "peerDependencies": {
+    "codemirror": ">=5.20.2",
     "react": ">=15",
+    "react-codemirror": ">=0.2.6",
     "react-styleguidist": ">=4.5",
     "webpack": ">=1.14.0"
   },

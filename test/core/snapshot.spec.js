@@ -17,13 +17,13 @@ test('passes if new', () => {
 })
 
 test('fails if the type changes', () => {
-  const tree = { type: 'div' }
+  const tree = { type: 'div', children: [{ type: 'span' }] }
   snapshot('name', tree)
 
   tree.type = 'span'
   const result = snapshot('name', tree)
 
-  expect(result).toEqual({ actual: '<span />', count: 1, expected: '<div />', pass: false })
+  expect(result).toMatchSnapshot()
 })
 
 test('does not fail if update is true', () => {
