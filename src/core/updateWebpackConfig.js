@@ -28,7 +28,11 @@ const updateWebpackConfig = (webpackConfig, env, serverInfo) => {
     }
   )
 
-  webpackConfig.entry.push(stylesPath('styles.css'))
+  webpackConfig.entry.push(
+    stylesPath('styles.css'),
+    'codemirror/lib/codemirror.css',
+    'rsg-codemirror-theme.css'
+  )
 
   Object.assign(webpackConfig.resolve.alias, {
     [PLAYGROUND_RENDERER]: componentPath('PlaygroundRenderer'),

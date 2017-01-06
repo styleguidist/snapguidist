@@ -25,9 +25,9 @@
 }
 
 .snapguidist__button {
-  background-color: #fff;
+  background-color: #333;
   border: 0;
-  color: #333;
+  color: #fff;
   cursor: pointer;
   font-size: 11px;
   margin-right: 4px;
@@ -53,15 +53,14 @@
   color: #333;
   display: inline-block;
   font-size: 11px;
-  margin-top: 4px;
+  margin: 4px 0 0 2px;
   text-transform: uppercase;
 }
 
-.snapguidist__code {
-  background-color: #333;
+.snapguidist__code .CodeMirror {
   border-radius: 3px;
-  color: #fff;
-  display: block;
+  border: 1px solid #ff3d3d;
   font-size: 12px;
-  padding: 4px;
+  height: auto;
+  padding: 4px 12px;
 }

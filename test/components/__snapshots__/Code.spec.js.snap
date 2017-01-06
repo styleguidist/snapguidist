@@ -1,0 +1,39 @@
+exports[`test works with diff 1`] = `
+<div>
+  <div
+    className="ReactStyleguidist-common__font snapguidist__label">
+    label
+  </div>
+  <div
+    className="snapguidist__code">
+    <CodeMirror
+      options={
+        Object {
+          "mode": "diff",
+          "theme": "theme",
+        }
+      }
+      value="value" />
+  </div>
+</div>
+`;
+
+exports[`test works with jsx 1`] = `
+<div>
+  <div
+    className="ReactStyleguidist-common__font snapguidist__label">
+    label
+  </div>
+  <div
+    className="snapguidist__code">
+    <CodeMirror
+      options={
+        Object {
+          "mode": "jsx",
+          "theme": "theme",
+        }
+      }
+      value="value" />
+  </div>
+</div>
+`;
