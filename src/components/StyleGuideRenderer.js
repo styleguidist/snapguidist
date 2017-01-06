@@ -1,6 +1,6 @@
 import { createElement, Component } from 'react'
 import StyleGuideRenderer from 'react-styleguidist/src/rsg-components/StyleGuide/StyleGuideRenderer'
-import { snapguidistShape, snapguidistContextFactory } from '../context'
+import { snapguidistShape, snapguidistFactory } from '../queue'
 
 export default class SnapguidistStyleGuideRenderer extends Component {
 
@@ -11,7 +11,7 @@ export default class SnapguidistStyleGuideRenderer extends Component {
   }
 
   componentWillMount() {
-    this.snapguidist = snapguidistContextFactory()
+    this.snapguidist = snapguidistFactory()
   }
 
   render() {

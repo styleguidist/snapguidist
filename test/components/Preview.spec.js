@@ -133,10 +133,12 @@ test('it passes the response to Test', () => {
   })
   const wrapper = mount(<SnapguidistPreview {...props} />, options)
 
-  const response = { pass: true }
-  listener({ name: 'name', response })
+  const name = 'name'
+  const passedResponse = { pass: true }
+  const response = { [name]: passedResponse }
+  listener(response)
 
-  expect(wrapper.find('Test').prop('response')).toBe(response)
+  expect(wrapper.find('Test').prop('response')).toBe(passedResponse)
 })
 
 test('unregister context listener on componentWillUnmount', () => {

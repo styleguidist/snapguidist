@@ -1,4 +1,4 @@
-import pubSubFactory from '../../src/context/pubSubFactory'
+import pubSubFactory from '../../src/queue/pubSubFactory'
 
 test('exposes the expected API', () => {
   const pubSub = pubSubFactory()

@@ -1,12 +1,12 @@
-import snapguidistContextFactory from '../../src/context/snapguidistContextFactory'
+import snapguidistFactory from '../../src/queue/snapguidistFactory'
 
 jest.mock(
-  '../../src/context/testQueueFactory',
+  '../../src/queue/testQueueFactory',
   () => () => {
     const listeners = new Set()
     return {
       addTest: jest.fn(
-        (name, snapshot) => listeners.forEach(ls => ls({ name, response: snapshot }))
+        (name, snapshot) => listeners.forEach(ls => ls({ [name]: snapshot }))
       ),
       clear: jest.fn(() => listeners.clear()),
       clearListeners: jest.fn(() => listeners.clear()),
@@ -20,15 +20,21 @@ jest.mock(
 )
 
 jest.mock(
-  '../../src/context/renderSnapshot',
-  () => (name, component) => `{"name":"${name}","tree":"${component}"}`
+  '../../src/queue/renderSnapshotTree',
+  () => component => `"${component}"`
 )
 
-process.env.SNAPGUIDIST = { concurrentTests: 3 }
+global.process = {
+  env: {
+    SNAPGUIDIST: {
+      concurrentTests: 3,
+    },
+  },
+}
 
 test('exposes the expected API', () => {
-  const context = snapguidistContextFactory()
-  const { clear, listen, runTest } = context
+  const queue = snapguidistFactory()
+  const { clear, listen, runTest } = queue
 
   expect(clear).toBeDefined()
   expect(typeof clear).toBe('function')
@@ -37,29 +43,29 @@ test('exposes the expected API', () => {
   expect(runTest).toBeDefined()
   expect(typeof runTest).toBe('function')
 
-  expect(Object.keys(context).length).toBe(3)
+  expect(Object.keys(queue).length).toBe(3)
 })
 
 test('adds requested snapshot and return an object with isQueuing set to true', () => {
-  const { runTest } = snapguidistContextFactory()
+  const { runTest } = snapguidistFactory()
 
   const result = runTest('name', 'reactElement')
   expect(result).toMatchObject({ isQueuing: true })
 })
 
 test('ignores the requested snapshot and return an object with isQueuing set to false', () => {
-  const { runTest } = snapguidistContextFactory()
+  const { runTest } = snapguidistFactory()
 
   runTest('name', 'reactElement')
   const result = runTest('name', 'reactElement')
   expect(result).toMatchObject({
     isQueuing: false,
-    response: '{"name":"name","tree":"reactElement"}',
+    response: '"reactElement"',
   })
 })
 
 test('registers given listener function', () => {
-  const { listen, runTest } = snapguidistContextFactory()
+  const { listen, runTest } = snapguidistFactory()
   const cb = jest.fn()
 
   listen(cb)
@@ -69,7 +75,7 @@ test('registers given listener function', () => {
 })
 
 test('returns a unregister function from `listen()` method', () => {
-  const { listen, runTest } = snapguidistContextFactory()
+  const { listen, runTest } = snapguidistFactory()
   const cb = jest.fn()
 
   const unregister = listen(cb)
@@ -80,7 +86,7 @@ test('returns a unregister function from `listen()` method', () => {
 })
 
 test('notifies all registered listeners', () => {
-  const { listen, runTest } = snapguidistContextFactory()
+  const { listen, runTest } = snapguidistFactory()
   const cb1 = jest.fn()
   const cb2 = jest.fn()
 
@@ -93,20 +99,19 @@ test('notifies all registered listeners', () => {
 })
 
 test('pasess the same result to every registered listener function', () => {
-  const { listen, runTest } = snapguidistContextFactory()
+  const { listen, runTest } = snapguidistFactory()
   const cb = jest.fn()
 
   listen(cb)
-  runTest('name', 'reactElement')
+  const name = 'name'
+  const elem = 'reactElement'
+  runTest(name, elem)
 
-  expect(cb).toHaveBeenCalledWith({
-    name: 'name',
-    response: '{"name":"name","tree":"reactElement"}',
-  })
+  expect(cb).toHaveBeenCalledWith({ [name]: `"${elem}"` })
 })
 
 test('removes all registered listeners', () => {
-  const { clear, listen, runTest } = snapguidistContextFactory()
+  const { clear, listen, runTest } = snapguidistFactory()
   const cb1 = jest.fn()
   const cb2 = jest.fn()
 

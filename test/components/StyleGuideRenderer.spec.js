@@ -11,7 +11,7 @@ jest.mock(
 )
 
 jest.mock(
-  '../../src/context/snapguidistContextFactory',
+  '../../src/queue/snapguidistFactory',
   () => () => ({
     clear: jest.fn(),
     listen: jest.fn(),

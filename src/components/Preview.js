@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import Preview from 'react-styleguidist/src/rsg-components/Preview'
-import { snapguidistShape } from '../context'
+import { snapguidistShape } from '../queue'
 import Test from './Test'
 
 class SnapguidistPreview extends Component {
@@ -47,8 +47,10 @@ class SnapguidistPreview extends Component {
     return wrapper
   }
 
-  handleSnapshotResponse({ name, response } = {}) {
-    if (this.context.name === name) {
+  handleSnapshotResponse(responsesMap = {}) {
+    const { name } = this.context
+    const response = responsesMap[name]
+    if (response) {
       this.setState({ response, isQueuing: false })
     }
   }

@@ -1,4 +1,4 @@
-import runTest from '../../src/context/runTest'
+import runTests from '../../src/queue/runTests'
 
 jest.mock(
   '../../src/helpers/console',
@@ -20,16 +20,18 @@ global.process = {
 
 const name = 'name'
 const example = 'example'
-const snapshot = JSON.stringify({ name, tree: example })
+
+beforeEach(() => global.fetch.mockClear())
 
 test('fires a POST when update is false', () => {
   const update = false
-  runTest(snapshot, update)
+  const snapshots = [{ name, tree: { name, tree: example }, update }]
+  runTests(snapshots)
 
   expect(fetch).toHaveBeenCalledWith(
     'http://localhost:3000/snapguidist',
     {
-      body: '{"name":"name","tree":"example"}',
+      body: '[{"name":"name","tree":{"name":"name","tree":"example"},"update":false}]',
       headers: {
         'Content-Type': 'application/json',
       },
@@ -40,16 +42,17 @@ test('fires a POST when update is false', () => {
 
 test('fires a PUT when update is true', () => {
   const update = true
-  runTest(snapshot, update)
+  const snapshots = [{ name, tree: { name, tree: example }, update }]
+  runTests(snapshots)
 
   expect(fetch).toHaveBeenCalledWith(
     'http://localhost:3000/snapguidist',
     {
-      body: '{"name":"name","tree":"example"}',
+      body: '[{"name":"name","tree":{"name":"name","tree":"example"},"update":true}]',
       headers: {
         'Content-Type': 'application/json',
       },
-      method: 'PUT',
+      method: 'POST',
     }
   )
 })

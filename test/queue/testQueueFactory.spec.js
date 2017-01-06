@@ -1,8 +1,10 @@
-import testQueueFactory from '../../src/context/testQueueFactory'
-import runTest from '../../src/context/runTest'
+import testQueueFactory from '../../src/queue/testQueueFactory'
+import runTests from '../../src/queue/runTests'
+
+// TODO: Add test for batched execution!
 
 jest.mock(
-  '../../src/context/pubSubFactory',
+  '../../src/queue/pubSubFactory',
   () => () => {
     const listeners = new Set()
     return {
@@ -17,11 +19,20 @@ jest.mock(
 )
 
 jest.mock(
-  '../../src/context/runTest',
-  () => jest.fn(() => Promise.resolve({ pass: true }))
+  '../../src/queue/runTests',
+  () => jest.fn((snapshots = []) => {
+    const result = snapshots.reduce((acc, snapshot) => {
+      const { name } = snapshot
+      acc[name] = { pass: true }
+      return acc
+    }, {})
+    return Promise.resolve(result)
+  })
 )
 
-beforeEach(() => runTest.mockClear())
+const mockSnapshot = '{"name":"name","tree":"snapshot"}'
+
+beforeEach(() => runTests.mockClear())
 
 test('exposes the expected API', () => {
   const queue = testQueueFactory()
@@ -50,36 +61,38 @@ test('exposes the expected API', () => {
 test('starts the queue when adding a test', () => {
   const {
     addTest,
-  } = testQueueFactory()
+  } = testQueueFactory({ batch: { enabled: false } })
 
-  addTest('name', 'snapshot')
-  expect(runTest).toHaveBeenCalled()
+  addTest('name', mockSnapshot)
+  expect(runTests).toHaveBeenCalled()
 })
 
 test('passes `update` flag to runTest()', () => {
   const {
     addTest,
-  } = testQueueFactory()
+  } = testQueueFactory({ batch: { enabled: false } })
 
-  addTest('name', 'snapshot', true)
-  expect(runTest).toHaveBeenCalledWith('snapshot', true)
+  const name = 'name'
+  const update = true
+  const snapshots = [{ name, tree: mockSnapshot, update }]
+
+  addTest(name, mockSnapshot, update)
+  expect(runTests).toHaveBeenCalledWith(snapshots)
 })
 
 test('notifies listeners when a test return its result', () => {
   const {
     addTest,
     listen,
-  } = testQueueFactory()
+  } = testQueueFactory({ batch: { enabled: false } })
 
   const listener = jest.fn()
   listen(listener)
-  addTest('name', 'snapshot')
+  const name = 'name'
+  addTest(name, mockSnapshot)
 
   return Promise.resolve().then(() => {
-    expect(listener).toHaveBeenCalledWith({
-      response: { pass: true },
-      name: 'name',
-    })
+    expect(listener).toHaveBeenCalledWith({ [name]: { pass: true } })
   })
 })
 
@@ -93,7 +106,7 @@ test('returns a `unregister` function when invoking listen()', () => {
   const unregister = listen(listener)
   expect(typeof unregister).toBe('function')
   unregister()
-  addTest('name', 'snapshot')
+  addTest('name', mockSnapshot)
 
   return Promise.resolve().then(() => {
     expect(listener).not.toHaveBeenCalled()
@@ -113,7 +126,7 @@ test('removes all listeners', () => {
   listen(listener2)
 
   clear()
-  addTest('name', 'snapshot')
+  addTest('name', mockSnapshot)
 
   return Promise.resolve().then(() => {
     expect(listener1).not.toHaveBeenCalled()
