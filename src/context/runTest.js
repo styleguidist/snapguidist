@@ -1,3 +1,5 @@
+import '../helpers/console'
+
 const headers = { 'Content-Type': 'application/json' }
 
 export default function runTest(snapshot, update) {
