@@ -1,7 +1,7 @@
 import renderer from 'react-test-renderer'
 
-export default function renderSnapshot(name, component) {
-  const tree = renderer.create(component).toJSON()
+export default function renderSnapshot(name, reactElement) {
+  const tree = renderer.create(reactElement).toJSON()
   return JSON.stringify({ name, tree })
 }
 

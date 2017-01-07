@@ -45,7 +45,7 @@ export default function testQueueFactory(size = 1) {
           name,
           runTest(snapshot, update)
           .then((response) => {
-            // notify listenrs of test completion
+            // notify listeners of test completion
             notify({ response, name, snapshot, update })
 
             // try to move the queue forward
