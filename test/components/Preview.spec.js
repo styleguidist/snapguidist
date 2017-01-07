@@ -1,7 +1,6 @@
 import React from 'react'
 import { shallow, mount } from 'enzyme'
 import SnapguidistPreview from '../../src/components/Preview'
-import api from '../../src/api'
 
 jest.mock(
   'react-styleguidist/src/rsg-components/Preview',
@@ -11,17 +10,24 @@ jest.mock(
   }
 )
 
-jest.mock(
-  '../../src/api',
-  () => ({ runTest: jest.fn(() => ({ then: callback => callback({ pass: true }) })) })
-)
-
 const props = { code: 'code', evalInContext: () => {} }
-const options = { context: { name: 'name' } }
 
-beforeEach(() => api.runTest.mockClear())
+let failRunTest = true
+const runTest = jest.fn(() => failRunTest)
+const getOptions = snapguidist => ({
+  context: {
+    name: 'name',
+    snapguidist: Object.assign({
+      runTest,
+      listen: () => () => {},
+    }, snapguidist),
+  },
+})
+
+beforeEach(() => runTest.mockClear())
 
 test('passes the code to Preview', () => {
+  const options = getOptions()
   const wrapper = shallow(<SnapguidistPreview {...props} />, options)
 
   expect(wrapper.find('Preview').prop('code')).toEqual(props.code)
@@ -30,6 +36,7 @@ test('passes the code to Preview', () => {
 test('wraps evalInContext and stores the example', () => {
   const example = 'example'
   const evalInContext = () => () => example
+  const options = getOptions()
   const wrapper = shallow(<SnapguidistPreview {...props} evalInContext={evalInContext} />, options)
   const exampleComponent = wrapper.instance().evalInContext()
   exampleComponent()
@@ -38,6 +45,7 @@ test('wraps evalInContext and stores the example', () => {
 })
 
 test('passes isFetching to Test', () => {
+  const options = getOptions()
   const wrapper = shallow(<SnapguidistPreview {...props} />, options)
   const isFetching = true
   wrapper.setState({ isFetching })
@@ -46,36 +54,79 @@ test('passes isFetching to Test', () => {
 })
 
 test('fires the api call with the update flag', () => {
+  const options = getOptions()
   const wrapper = shallow(<SnapguidistPreview {...props} />, options)
   wrapper.find('Test').simulate('click')
 
-  expect(api.runTest).toHaveBeenCalledWith(options.context.name, undefined, true)
+  expect(runTest).toHaveBeenCalledWith(options.context.name, undefined, true)
+})
+
+test('should set isFetching to true when the test is executed', () => {
+  const options = getOptions()
+  const wrapper = mount(<SnapguidistPreview {...props} />, options)
+  expect(wrapper.state('isFetching')).toBeTruthy()
+})
+
+test('should set isFetching to false when the test is not executed', () => {
+  const origFailRunTest = failRunTest
+  failRunTest = false
+
+  const options = getOptions()
+  const wrapper = mount(<SnapguidistPreview {...props} />, options)
+  expect(wrapper.state('isFetching')).toBeFalsy()
+
+  failRunTest = origFailRunTest
 })
 
 test('fires the api call on didMount', () => {
+  const options = getOptions()
   mount(<SnapguidistPreview {...props} />, options)
 
-  expect(api.runTest).toHaveBeenCalledWith(options.context.name, undefined, undefined)
+  expect(runTest).toHaveBeenCalledWith(options.context.name, undefined, undefined)
 })
 
 test('fires the api call on didUpdate, when code changes', () => {
+  const options = getOptions()
   const wrapper = mount(<SnapguidistPreview {...props} />, options)
-  api.runTest.mockClear()
+  runTest.mockClear()
   wrapper.setProps({ code: 'c0d3' })
 
-  expect(api.runTest).toHaveBeenCalledWith(options.context.name, undefined, undefined)
+  expect(runTest).toHaveBeenCalledWith(options.context.name, undefined, undefined)
 })
 
 test('does not fire the api call on didUpdate, when code is the same', () => {
+  const options = getOptions()
   const wrapper = mount(<SnapguidistPreview {...props} />, options)
-  api.runTest.mockClear()
+  runTest.mockClear()
   wrapper.setProps(props)
 
-  expect(api.runTest).not.toHaveBeenCalledWith()
+  expect(runTest).not.toHaveBeenCalledWith()
 })
 
-test('passes the response to Test', () => {
+test('should passes the response to Test', () => {
+  let listener
+  const options = getOptions({
+    listen: (lst) => {
+      listener = lst
+      return () => {}
+    },
+  })
   const wrapper = mount(<SnapguidistPreview {...props} />, options)
 
-  expect(wrapper.find('Test').prop('response')).toEqual({ pass: true })
+  const response = { pass: true }
+  listener({ name: 'name', response })
+
+  expect(wrapper.find('Test').prop('response')).toBe(response)
 })
+
+test('should unregister context listener on componentWillUnmount', () => {
+  const unregister = jest.fn()
+  const options = getOptions({
+    listen: () => unregister,
+  })
+  const wrapper = mount(<SnapguidistPreview {...props} />, options)
+  wrapper.unmount()
+
+  expect(unregister).toHaveBeenCalled()
+})
+

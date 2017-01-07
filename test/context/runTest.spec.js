@@ -1,8 +1,8 @@
-import api from '../src/api'
+import runTest from '../../src/context/runTest'
 
 jest.mock(
-  'react-test-renderer',
-  () => ({ create: example => ({ toJSON: () => example }) })
+  '../../src/helpers/console',
+  () => {}
 )
 
 global.fetch = jest.fn(
@@ -13,10 +13,11 @@ process.env.SNAPGUIDIST = {}
 
 const name = 'name'
 const example = 'example'
+const snapshot = JSON.stringify({ name, tree: example })
 
 test('fires a POST when update is false', () => {
   const update = false
-  api.runTest(name, example, update)
+  runTest(snapshot, update)
 
   expect(global.fetch).toHaveBeenCalledWith(
     'http://localhost:3000/snapguidist',
@@ -32,7 +33,7 @@ test('fires a POST when update is false', () => {
 
 test('fires a PUT when update is true', () => {
   const update = true
-  api.runTest(name, example, update)
+  runTest(snapshot, update)
 
   expect(global.fetch).toHaveBeenCalledWith(
     'http://localhost:3000/snapguidist',
