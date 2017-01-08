@@ -25,16 +25,16 @@ export default function snapguidistContextFactory() {
     const snapshot = renderSnapshot(name, component)
 
     if (!update && cache.has(name)) {
-      const { snapshot: storedSnapshot } = cache.get(name)
+      const { snapshot: storedSnapshot, response } = cache.get(name)
       if (snapshot === storedSnapshot) {
-        return false
+        return { isFetching: false, response }
       }
     }
 
     cache.set(name, { name, snapshot })
     queue.addTest(name, snapshot, update)
 
-    return true
+    return { isFetching: true }
   }
 
   const listen = (listener) => {
@@ -42,12 +42,13 @@ export default function snapguidistContextFactory() {
     return () => listeners.delete(listener)
   }
 
-  const init = () => {
-    queue.listen(({ name, response }) => listeners.forEach(
-      listener => listener({ name, response })
-    ))
+  const handleQueueNotification = ({ name, response }) => {
+    const cached = cache.get(name)
+    cache.set(name, Object.assign({}, cached, { response }))
+    listeners.forEach(listener => listener({ name, response }))
   }
 
+  const init = () => queue.listen(handleQueueNotification)
   init()
 
   return {

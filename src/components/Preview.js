@@ -56,8 +56,13 @@ class SnapguidistPreview extends Component {
   }
 
   runTest(update) {
-    const isFetching = this.context.snapguidist.runTest(this.context.name, this.example, update)
-    this.setState({ isFetching })
+    const {
+      name,
+      snapguidist: { runTest } = {},
+    } = this.context
+
+    const { isFetching, response } = runTest(name, this.example, update)
+    this.setState({ isFetching, response })
   }
 
   render() {
