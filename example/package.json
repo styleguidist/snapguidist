@@ -9,7 +9,7 @@
     "react": "15.4.1",
     "react-dom": "15.4.1",
     "react-styleguidist": "4.5.0",
-    "snapguidist": "1.0.0",
+    "snapguidist": "1.1.0",
     "webpack": "1.14.0"
   }
 }
