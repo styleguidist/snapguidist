@@ -9,7 +9,7 @@ const STYLEGUIDE_RENDERER = 'rsg-components/StyleGuide/StyleGuideRenderer'
 const PLAYGROUND_RENDERER = 'rsg-components/Playground/PlaygroundRenderer'
 const PLAYGROUND_PREVIEW = 'rsg-components/Preview'
 
-const updateWebpackConfig = (webpackConfig, env, serverInfo) => {
+const updateWebpackConfig = (webpackConfig, env, snapguidistOptions) => {
   webpackConfig.module.loaders.push(
     {
       test: /\.jsx?$/,
@@ -39,7 +39,7 @@ const updateWebpackConfig = (webpackConfig, env, serverInfo) => {
   })
 
   webpackConfig.plugins.push(new webpack.DefinePlugin({
-    'process.env.SNAPGUIDIST': JSON.stringify(serverInfo),
+    'process.env.SNAPGUIDIST': JSON.stringify(snapguidistOptions),
   }))
 
   return webpackConfig
