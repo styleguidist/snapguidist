@@ -9,7 +9,7 @@ global.fetch = jest.fn(
   () => ({ then: () => ({ catch: () => {} }) })
 )
 
-process.env.SNAPGUIDIST = {}
+process.env.SNAPGUIDIST = { serverInfo: {} }
 
 const name = 'name'
 const example = 'example'
