@@ -1,7 +1,7 @@
 import runTest from './runTest'
 import pubSubFactory from './pubSubFactory'
 
-export default function testQueueFactory(size = 1) {
+export default function testQueueFactory(size = 3) {
   const pubSub = pubSubFactory()
   const { clearListeners, listen, notify } = pubSub
 
@@ -31,46 +31,46 @@ export default function testQueueFactory(size = 1) {
       } = queueIterator.next()
 
       if (done) {
-        // if the queue is complete clear the iterator
         queueIterator = null
       } else {
-        // start a new test
         const moveQueueForward = () => {
           running.delete(name)
           runNextTest()
         }
 
-        // run the test and add it to the `running` queue
+        queue.delete(name)
+
         running.set(
           name,
           runTest(snapshot, update)
           .then((response) => {
-            // notify listeners of test completion
             notify({ response, name, snapshot, update })
 
-            // try to move the queue forward
             moveQueueForward()
           })
           .catch(moveQueueForward)
         )
 
-        // try to move the queue forward
         runNextTest()
       }
     }
   }
 
+  /**
+   * Add the request to the queue,
+   * it'll overwrite queued values to avoid unnecessary test execution
+   *
+   * @param {string} name - Unique name of the component to be tested
+   * @param {string} snapshot - JSON snapshot of the compoennt to be tested
+   * @param {boolean} [update] - It specifies if the test must check or update the stored snapshot
+   */
   const addTest = (name, snapshot, update) => {
-    // Add the request to the queue,
-    // it'll overwrite queued values to avoid unnecessary test execution
     queue.set(name, { name, snapshot, update })
 
-    // initialize the iterator if is not already available
     if (!queueIterator) {
       queueIterator = queue.values()
     }
 
-    // try to move the queue forward
     runNextTest()
   }
 
