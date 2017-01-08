@@ -45,12 +45,15 @@ test('should add requested snapshot to return true', () => {
   expect(result).toBeTruthy()
 })
 
-test('should ignore the requested snapshot and return false', () => {
+test('should ignore the requested snapshot and return an object with isFetching set to false', () => {
   const { runTest } = snapguidistContextFactory()
 
   runTest('name', 'reactElement')
   const result = runTest('name', 'reactElement')
-  expect(result).toBeFalsy()
+  expect(result).toMatchObject({
+    isFetching: false,
+    response: '{"name":"name","tree":"reactElement"}',
+  })
 })
 
 test('should register given listener function', () => {

@@ -12,8 +12,16 @@ jest.mock(
 
 const props = { code: 'code', evalInContext: () => {} }
 
-let failRunTest = true
-const runTest = jest.fn(() => failRunTest)
+let executeRunTest = true
+const runTest = jest.fn(() => {
+  if (!executeRunTest) {
+    return {
+      isFetching: false,
+      response: { pass: true },
+    }
+  }
+  return { isFetching: true }
+})
 const getOptions = snapguidist => ({
   context: {
     name: 'name',
@@ -68,14 +76,25 @@ test('should set isFetching to true when the test is executed', () => {
 })
 
 test('should set isFetching to false when the test is not executed', () => {
-  const origFailRunTest = failRunTest
-  failRunTest = false
+  const origFailRunTest = executeRunTest
+  executeRunTest = false
 
   const options = getOptions()
   const wrapper = mount(<SnapguidistPreview {...props} />, options)
   expect(wrapper.state('isFetching')).toBeFalsy()
 
-  failRunTest = origFailRunTest
+  executeRunTest = origFailRunTest
+})
+
+test('should update `state.response` when the test is not executed', () => {
+  const origFailRunTest = executeRunTest
+  executeRunTest = false
+
+  const options = getOptions()
+  const wrapper = mount(<SnapguidistPreview {...props} />, options)
+  expect(wrapper.state('response')).toMatchObject({ pass: true })
+
+  executeRunTest = origFailRunTest
 })
 
 test('fires the api call on didMount', () => {
