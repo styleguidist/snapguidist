@@ -38,20 +38,20 @@ test('should expose the expected API', () => {
   expect(Object.keys(context).length).toBe(3)
 })
 
-test('should add requested snapshot and return an object with isFetching set to true', () => {
+test('should add requested snapshot and return an object with isQueuing set to true', () => {
   const { runTest } = snapguidistContextFactory()
 
   const result = runTest('name', 'reactElement')
-  expect(result).toMatchObject({ isFetching: true })
+  expect(result).toMatchObject({ isQueuing: true })
 })
 
-test('should ignore the requested snapshot and return an object with isFetching set to false', () => {
+test('should ignore the requested snapshot and return an object with isQueuing set to false', () => {
   const { runTest } = snapguidistContextFactory()
 
   runTest('name', 'reactElement')
   const result = runTest('name', 'reactElement')
   expect(result).toMatchObject({
-    isFetching: false,
+    isQueuing: false,
     response: '{"name":"name","tree":"reactElement"}',
   })
 })

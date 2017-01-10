@@ -5,7 +5,7 @@ import toJSON from 'enzyme-to-json'
 import Test from '../../src/components/Test'
 
 const props = {
-  isFetching: false,
+  isQueuing: false,
   onClick: () => {},
   response: {
     actual: 'actual',
@@ -35,7 +35,7 @@ test('works when fail, without diff)', () => {
 })
 
 test('works when is fetching', () => {
-  const wrapper = shallow(<Test {...props} isFetching />)
+  const wrapper = shallow(<Test {...props} isQueuing />)
 
   expect(toJSON(wrapper)).toMatchSnapshot()
 })

@@ -49,7 +49,7 @@ class SnapguidistPreview extends Component {
 
   handleSnapshotResponse({ name, response } = {}) {
     if (this.context.name === name) {
-      this.setState({ response, isFetching: false })
+      this.setState({ response, isQueuing: false })
     }
   }
 
@@ -59,13 +59,13 @@ class SnapguidistPreview extends Component {
       snapguidist: { runTest },
     } = this.context
 
-    const { isFetching, response } = runTest(name, this.example, update)
-    this.setState({ isFetching, response })
+    const { isQueuing, response } = runTest(name, this.example, update)
+    this.setState({ isQueuing, response })
   }
 
   render() {
     const {
-      isFetching,
+      isQueuing,
       response,
     } = this.state
 
@@ -73,7 +73,7 @@ class SnapguidistPreview extends Component {
       <div>
         <Preview {...this.props} evalInContext={this.evalInContext} />
         <Test
-          isFetching={isFetching}
+          isQueuing={isQueuing}
           onClick={this.forceUpdateTest}
           response={response}
         />

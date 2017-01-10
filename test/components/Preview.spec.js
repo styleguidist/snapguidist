@@ -16,11 +16,11 @@ let executeRunTest = true
 const runTest = jest.fn(() => {
   if (!executeRunTest) {
     return {
-      isFetching: false,
+      isQueuing: false,
       response: { pass: true },
     }
   }
-  return { isFetching: true }
+  return { isQueuing: true }
 })
 const getOptions = snapguidist => ({
   context: {
@@ -52,13 +52,13 @@ test('wraps evalInContext and stores the example', () => {
   expect(wrapper.instance().example).toBe(example)
 })
 
-test('passes isFetching to Test', () => {
+test('passes isQueuing to Test', () => {
   const options = getOptions()
   const wrapper = shallow(<SnapguidistPreview {...props} />, options)
-  const isFetching = true
-  wrapper.setState({ isFetching })
+  const isQueuing = true
+  wrapper.setState({ isQueuing })
 
-  expect(wrapper.find('Test').prop('isFetching')).toEqual(isFetching)
+  expect(wrapper.find('Test').prop('isQueuing')).toEqual(isQueuing)
 })
 
 test('fires the api call with the update flag', () => {
@@ -69,19 +69,19 @@ test('fires the api call with the update flag', () => {
   expect(runTest).toHaveBeenCalledWith(options.context.name, undefined, true)
 })
 
-test('should set isFetching to true when the test is executed', () => {
+test('should set isQueuing to true when the test is executed', () => {
   const options = getOptions()
   const wrapper = mount(<SnapguidistPreview {...props} />, options)
-  expect(wrapper.state('isFetching')).toBeTruthy()
+  expect(wrapper.state('isQueuing')).toBeTruthy()
 })
 
-test('should set isFetching to false when the test is not executed', () => {
+test('should set isQueuing to false when the test is not executed', () => {
   const origFailRunTest = executeRunTest
   executeRunTest = false
 
   const options = getOptions()
   const wrapper = mount(<SnapguidistPreview {...props} />, options)
-  expect(wrapper.state('isFetching')).toBeFalsy()
+  expect(wrapper.state('isQueuing')).toBeFalsy()
 
   executeRunTest = origFailRunTest
 })

@@ -27,14 +27,14 @@ export default function snapguidistContextFactory() {
     if (!update && cache.has(name)) {
       const { snapshot: storedSnapshot, response } = cache.get(name)
       if (snapshot === storedSnapshot) {
-        return { isFetching: false, response }
+        return { isQueuing: false, response }
       }
     }
 
     cache.set(name, { name, snapshot })
     queue.addTest(name, snapshot, update)
 
-    return { isFetching: true }
+    return { isQueuing: true }
   }
 
   const listen = (listener) => {
