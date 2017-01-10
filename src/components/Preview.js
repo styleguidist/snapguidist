@@ -59,8 +59,16 @@ class SnapguidistPreview extends Component {
       snapguidist: { runTest },
     } = this.context
 
+    const {
+      isQueuing: prevIsQueuing,
+      respnse: prevResponse,
+    } = this.state
+
     const { isQueuing, response } = runTest(name, this.example, update)
-    this.setState({ isQueuing, response })
+
+    if (prevIsQueuing !== isQueuing || prevResponse !== response) {
+      this.setState({ isQueuing, response })
+    }
   }
 
   render() {
