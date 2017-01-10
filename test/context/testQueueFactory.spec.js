@@ -83,8 +83,6 @@ test('should notify listeners when a test return its result', () => {
     expect(listener).toHaveBeenCalledWith({
       response: { pass: true },
       name: 'name',
-      snapshot: 'snapshot',
-      update: undefined,
     })
   })
 })

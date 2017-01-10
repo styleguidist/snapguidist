@@ -44,7 +44,7 @@ export default function testQueueFactory(size = 3) {
           name,
           runTest(snapshot, update)
           .then((response) => {
-            notify({ response, name, snapshot, update })
+            notify({ name, response })
 
             moveQueueForward()
           })

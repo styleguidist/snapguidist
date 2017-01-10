@@ -17,7 +17,7 @@ export default function snapguidistContextFactory() {
    * then check if the snapshot is changed from the one stored from last execution.
    *
    * @param {string} name - Unique name of the component to be tested
-   * @param {ReactElement} component - ReactElement of the compoennt to be tested
+   * @param {ReactElement} component - ReactElement of the component to be tested
    * @param {boolean} [update] - It specifies if the test must check or update the stored snapshot
    * @return {boolean} Returns true if the test is run, false otherwise
    */

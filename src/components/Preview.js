@@ -17,9 +17,7 @@ class SnapguidistPreview extends Component {
   }
 
   componentWillMount() {
-    const {
-      snapguidist = {},
-    } = this.context
+    const { snapguidist } = this.context
 
     this.forgetSnapguidist = snapguidist.listen(this.handleSnapshotResponse)
   }
@@ -58,7 +56,7 @@ class SnapguidistPreview extends Component {
   runTest(update) {
     const {
       name,
-      snapguidist: { runTest } = {},
+      snapguidist: { runTest },
     } = this.context
 
     const { isFetching, response } = runTest(name, this.example, update)

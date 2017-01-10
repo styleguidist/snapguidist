@@ -38,11 +38,11 @@ test('should expose the expected API', () => {
   expect(Object.keys(context).length).toBe(3)
 })
 
-test('should add requested snapshot to return true', () => {
+test('should add requested snapshot and return an object with isFetching set to true', () => {
   const { runTest } = snapguidistContextFactory()
 
   const result = runTest('name', 'reactElement')
-  expect(result).toBeTruthy()
+  expect(result).toMatchObject({ isFetching: true })
 })
 
 test('should ignore the requested snapshot and return an object with isFetching set to false', () => {
