@@ -24,7 +24,7 @@ jest.mock(
   () => (name, component) => `{"name":"${name}","tree":"${component}"}`
 )
 
-test('should expose the expected API', () => {
+test('exposes the expected API', () => {
   const context = snapguidistContextFactory()
   const { clear, listen, runTest } = context
 
@@ -38,14 +38,14 @@ test('should expose the expected API', () => {
   expect(Object.keys(context).length).toBe(3)
 })
 
-test('should add requested snapshot and return an object with isQueuing set to true', () => {
+test('adds requested snapshot and return an object with isQueuing set to true', () => {
   const { runTest } = snapguidistContextFactory()
 
   const result = runTest('name', 'reactElement')
   expect(result).toMatchObject({ isQueuing: true })
 })
 
-test('should ignore the requested snapshot and return an object with isQueuing set to false', () => {
+test('ignores the requested snapshot and return an object with isQueuing set to false', () => {
   const { runTest } = snapguidistContextFactory()
 
   runTest('name', 'reactElement')
@@ -56,7 +56,7 @@ test('should ignore the requested snapshot and return an object with isQueuing s
   })
 })
 
-test('should register given listener function', () => {
+test('registers given listener function', () => {
   const { listen, runTest } = snapguidistContextFactory()
   const cb = jest.fn()
 
@@ -66,7 +66,7 @@ test('should register given listener function', () => {
   expect(cb).toHaveBeenCalled()
 })
 
-test('should return a unregister function from `listen()` method', () => {
+test('returns a unregister function from `listen()` method', () => {
   const { listen, runTest } = snapguidistContextFactory()
   const cb = jest.fn()
 
@@ -77,7 +77,7 @@ test('should return a unregister function from `listen()` method', () => {
   expect(cb).not.toHaveBeenCalled()
 })
 
-test('should notify all registered listeners', () => {
+test('notifies all registered listeners', () => {
   const { listen, runTest } = snapguidistContextFactory()
   const cb1 = jest.fn()
   const cb2 = jest.fn()
@@ -90,7 +90,7 @@ test('should notify all registered listeners', () => {
   expect(cb2).toHaveBeenCalled()
 })
 
-test('should pass the same result to every registered listener function', () => {
+test('pasess the same result to every registered listener function', () => {
   const { listen, runTest } = snapguidistContextFactory()
   const cb = jest.fn()
 
@@ -103,7 +103,7 @@ test('should pass the same result to every registered listener function', () => 
   })
 })
 
-test('should remove all registered listeners', () => {
+test('removes all registered listeners', () => {
   const { clear, listen, runTest } = snapguidistContextFactory()
   const cb1 = jest.fn()
   const cb2 = jest.fn()

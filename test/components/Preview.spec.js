@@ -69,13 +69,13 @@ test('fires the api call with the update flag', () => {
   expect(runTest).toHaveBeenCalledWith(options.context.name, undefined, true)
 })
 
-test('should set isQueuing to true when the test is executed', () => {
+test('set isQueuing to true when the test is executed', () => {
   const options = getOptions()
   const wrapper = mount(<SnapguidistPreview {...props} />, options)
   expect(wrapper.state('isQueuing')).toBeTruthy()
 })
 
-test('should set isQueuing to false when the test is not executed', () => {
+test('set isQueuing to false when the test is not executed', () => {
   const origFailRunTest = executeRunTest
   executeRunTest = false
 
@@ -86,7 +86,7 @@ test('should set isQueuing to false when the test is not executed', () => {
   executeRunTest = origFailRunTest
 })
 
-test('should update `state.response` when the test is not executed', () => {
+test('update `state.response` when the test is not executed', () => {
   const origFailRunTest = executeRunTest
   executeRunTest = false
 
@@ -122,7 +122,7 @@ test('does not fire the api call on didUpdate, when code is the same', () => {
   expect(runTest).not.toHaveBeenCalledWith()
 })
 
-test('should passes the response to Test', () => {
+test('it passes the response to Test', () => {
   let listener
   const options = getOptions({
     listen: (lst) => {
@@ -138,7 +138,7 @@ test('should passes the response to Test', () => {
   expect(wrapper.find('Test').prop('response')).toBe(response)
 })
 
-test('should unregister context listener on componentWillUnmount', () => {
+test('unregister context listener on componentWillUnmount', () => {
   const unregister = jest.fn()
   const options = getOptions({
     listen: () => unregister,

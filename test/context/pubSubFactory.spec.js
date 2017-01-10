@@ -1,6 +1,6 @@
 import pubSubFactory from '../../src/context/pubSubFactory'
 
-test('should expose the expected API', () => {
+test('exposes the expected API', () => {
   const pubSub = pubSubFactory()
   const { clearListeners, listen, notify } = pubSub
 
@@ -14,7 +14,7 @@ test('should expose the expected API', () => {
   expect(Object.keys(pubSub).length).toBe(3)
 })
 
-test('should register given listener function', () => {
+test('registers given listener function', () => {
   const { listen, notify } = pubSubFactory()
   const cb = jest.fn()
 
@@ -24,7 +24,7 @@ test('should register given listener function', () => {
   expect(cb).toHaveBeenCalled()
 })
 
-test('should return a unregister function from `listen()` method', () => {
+test('returns a unregister function from `listen()` method', () => {
   const { listen, notify } = pubSubFactory()
   const cb = jest.fn()
 
@@ -35,7 +35,7 @@ test('should return a unregister function from `listen()` method', () => {
   expect(cb).not.toHaveBeenCalled()
 })
 
-test('should notify all registered listeners', () => {
+test('notifies all registered listeners', () => {
   const { listen, notify } = pubSubFactory()
   const cb1 = jest.fn()
   const cb2 = jest.fn()
@@ -48,7 +48,7 @@ test('should notify all registered listeners', () => {
   expect(cb2).toHaveBeenCalled()
 })
 
-test('should pass any received argument to every registered listener function', () => {
+test('passes any received argument to every registered listener function', () => {
   const { listen, notify } = pubSubFactory()
   const cb = jest.fn()
 
@@ -59,7 +59,7 @@ test('should pass any received argument to every registered listener function', 
   expect(cb).toHaveBeenCalledWith('yo', data, 67)
 })
 
-test('should remove all registered listeners', () => {
+test('removes all registered listeners', () => {
   const { clearListeners, listen, notify } = pubSubFactory()
   const cb1 = jest.fn()
   const cb2 = jest.fn()

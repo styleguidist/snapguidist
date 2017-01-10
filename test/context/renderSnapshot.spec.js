@@ -5,7 +5,7 @@ jest.mock(
   () => ({ create: reactElement => ({ toJSON: () => reactElement }) })
 )
 
-test('should return a JSON with a valid structure', () => {
+test('returns a JSON with a valid structure', () => {
   const snapshot = '{"name":"name","tree":"reactElement"}'
   expect(renderSnapShot('name', 'reactElement')).toEqual(snapshot)
 })

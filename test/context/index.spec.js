@@ -10,7 +10,7 @@ jest.mock(
   () => ({})
 )
 
-test('should expose the expected API', () => {
+test('it exposes the expected API', () => {
   expect(snapguidistContextFactory).toBeDefined()
   expect(typeof snapguidistContextFactory).toBe('function')
   expect(snapguidistShape).toBeDefined()

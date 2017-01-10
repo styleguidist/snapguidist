@@ -27,7 +27,7 @@ function delay(time = 0) {
 
 beforeEach(() => runTest.mockClear())
 
-test('should expose the expected API', () => {
+test('exposes the expected API', () => {
   const queue = testQueueFactory()
   const {
     addTest,
@@ -51,7 +51,7 @@ test('should expose the expected API', () => {
   expect(Object.keys(queue).length).toBe(5)
 })
 
-test('should start the queue when adding a test', () => {
+test('starts the queue when adding a test', () => {
   const {
     addTest,
   } = testQueueFactory()
@@ -60,7 +60,7 @@ test('should start the queue when adding a test', () => {
   expect(runTest).toHaveBeenCalled()
 })
 
-test('should pass `update` flag to runTest()', () => {
+test('passes `update` flag to runTest()', () => {
   const {
     addTest,
   } = testQueueFactory()
@@ -69,7 +69,7 @@ test('should pass `update` flag to runTest()', () => {
   expect(runTest).toHaveBeenCalledWith('snapshot', true)
 })
 
-test('should notify listeners when a test return its result', () => {
+test('notifies listeners when a test return its result', () => {
   const {
     addTest,
     listen,
@@ -87,7 +87,7 @@ test('should notify listeners when a test return its result', () => {
   })
 })
 
-test('should return a `unregister` function when invoking listen()', () => {
+test('returns a `unregister` function when invoking listen()', () => {
   const {
     addTest,
     listen,
@@ -104,7 +104,7 @@ test('should return a `unregister` function when invoking listen()', () => {
   })
 })
 
-test('should remove all listeners', () => {
+test('removes all listeners', () => {
   const {
     addTest,
     clear,
