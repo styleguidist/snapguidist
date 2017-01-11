@@ -56,14 +56,8 @@ export default function testQueueFactory(size = 3) {
     }
   }
 
-  /**
-   * Add the request to the queue,
-   * it'll overwrite queued values to avoid unnecessary test execution
-   *
-   * @param {string} name - Unique name of the component to be tested
-   * @param {string} snapshot - JSON snapshot of the compoennt to be tested
-   * @param {boolean} [update] - It specifies if the test must check or update the stored snapshot
-   */
+  // Add the request to the queue,
+  // it'll overwrite queued values to avoid unnecessary test execution
   const addTest = (name, snapshot, update) => {
     queue.set(name, { name, snapshot, update })
 
