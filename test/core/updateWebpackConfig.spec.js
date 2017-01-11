@@ -48,6 +48,7 @@ test('enhances the webpack configuration', () => {
 
     resolve: {
       alias: {
+        'rsg-components/StyleGuide/StyleGuideRenderer': `${srcFolder}/src/components/StyleGuideRenderer`,
         'rsg-components/Playground/PlaygroundRenderer': `${srcFolder}/src/components/PlaygroundRenderer`,
         'rsg-components/Preview': `${srcFolder}/src/components/Preview`,
       },

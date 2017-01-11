@@ -61,5 +61,8 @@
   },
   "lint-staged": {
     "*.js": "eslint"
+  },
+  "jest": {
+    "notify": true
   }
 }

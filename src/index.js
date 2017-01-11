@@ -14,7 +14,6 @@ function snapguidist(config = {}) {
 
   return Object.assign(config,
     {
-
       updateWebpackConfig(webpackConfig, env) {
         let final = updateWebpackConfig(webpackConfig, env, serverInfo)
         if (_updateWebpackConfig) {
@@ -29,7 +28,6 @@ function snapguidist(config = {}) {
           _configureServer(app, env)
         }
       },
-
     }
   )
 }

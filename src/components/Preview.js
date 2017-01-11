@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import Preview from 'react-styleguidist/src/rsg-components/Preview'
-import api from '../api'
+import { snapguidistShape } from '../context'
 import Test from './Test'
 
 class SnapguidistPreview extends Component {
@@ -11,7 +11,15 @@ class SnapguidistPreview extends Component {
     this.state = { response: null }
 
     this.runTest = this.runTest.bind(this)
+    this.forceUpdateTest = this.runTest.bind(this, true)
     this.evalInContext = this.evalInContext.bind(this)
+    this.handleSnapshotResponse = this.handleSnapshotResponse.bind(this)
+  }
+
+  componentWillMount() {
+    const { snapguidist } = this.context
+
+    this.forgetSnapguidist = snapguidist.listen(this.handleSnapshotResponse)
   }
 
   componentDidMount() {
@@ -24,12 +32,8 @@ class SnapguidistPreview extends Component {
     }
   }
 
-  runTest(update) {
-    this.setState({ isFetching: true })
-
-    api
-      .runTest(this.context.name, this.example, update)
-      .then(response => this.setState({ response, isFetching: false }))
+  componentWillUnmount() {
+    this.forgetSnapguidist()
   }
 
   evalInContext(code) {
@@ -37,21 +41,49 @@ class SnapguidistPreview extends Component {
 
     const wrapper = (state, setState, callback) => {
       this.example = result(state, setState, callback)
-
       return this.example
     }
 
     return wrapper
   }
 
+  handleSnapshotResponse({ name, response } = {}) {
+    if (this.context.name === name) {
+      this.setState({ response, isQueuing: false })
+    }
+  }
+
+  runTest(update) {
+    const {
+      name,
+      snapguidist: { runTest },
+    } = this.context
+
+    const {
+      isQueuing: prevIsQueuing,
+      respnse: prevResponse,
+    } = this.state
+
+    const { isQueuing, response } = runTest(name, this.example, update)
+
+    if (prevIsQueuing !== isQueuing || prevResponse !== response) {
+      this.setState({ isQueuing, response })
+    }
+  }
+
   render() {
+    const {
+      isQueuing,
+      response,
+    } = this.state
+
     return (
       <div>
         <Preview {...this.props} evalInContext={this.evalInContext} />
         <Test
-          isFetching={this.state.isFetching}
-          onClick={() => this.runTest(true)}
-          response={this.state.response}
+          isQueuing={isQueuing}
+          onClick={this.forceUpdateTest}
+          response={response}
         />
       </div>
     )
@@ -65,6 +97,7 @@ SnapguidistPreview.propTypes = {
 
 SnapguidistPreview.contextTypes = {
   name: PropTypes.string.isRequired,
+  snapguidist: snapguidistShape,
 }
 
 export default SnapguidistPreview
