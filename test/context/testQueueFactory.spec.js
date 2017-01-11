@@ -21,10 +21,6 @@ jest.mock(
   () => jest.fn(() => Promise.resolve({ pass: true }))
 )
 
-function delay(time = 0) {
-  return new Promise(resolve => setTimeout(resolve, time))
-}
-
 beforeEach(() => runTest.mockClear())
 
 test('exposes the expected API', () => {
@@ -79,7 +75,7 @@ test('notifies listeners when a test return its result', () => {
   listen(listener)
   addTest('name', 'snapshot')
 
-  return delay(50).then(() => {
+  return Promise.resolve().then(() => {
     expect(listener).toHaveBeenCalledWith({
       response: { pass: true },
       name: 'name',
@@ -99,7 +95,7 @@ test('returns a `unregister` function when invoking listen()', () => {
   unregister()
   addTest('name', 'snapshot')
 
-  return delay(50).then(() => {
+  return Promise.resolve().then(() => {
     expect(listener).not.toHaveBeenCalled()
   })
 })
@@ -119,7 +115,7 @@ test('removes all listeners', () => {
   clear()
   addTest('name', 'snapshot')
 
-  return delay(50).then(() => {
+  return Promise.resolve().then(() => {
     expect(listener1).not.toHaveBeenCalled()
     expect(listener2).not.toHaveBeenCalled()
   })
