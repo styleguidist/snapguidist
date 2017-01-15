@@ -4,11 +4,11 @@ const headers = { 'Content-Type': 'application/json' }
 
 export default function runTest(snapshot, update) {
   const {
-    host = 'localhost',
-    port = 3000,
+    serverHost,
+    serverPort,
   } = process.env.SNAPGUIDIST
 
-  const url = `http://${host}:${port}/snapguidist`
+  const url = `http://${serverHost}:${serverPort}/snapguidist`
   const method = update ? 'PUT' : 'POST'
 
   return fetch(url, { method, headers, body: snapshot })

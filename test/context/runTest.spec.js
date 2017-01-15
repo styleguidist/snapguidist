@@ -9,7 +9,14 @@ global.fetch = jest.fn(
   () => ({ then: () => ({ catch: () => {} }) })
 )
 
-process.env.SNAPGUIDIST = {}
+global.process = {
+  env: {
+    SNAPGUIDIST: {
+      serverHost: 'localhost',
+      serverPort: 3000,
+    },
+  },
+}
 
 const name = 'name'
 const example = 'example'
@@ -19,7 +26,7 @@ test('fires a POST when update is false', () => {
   const update = false
   runTest(snapshot, update)
 
-  expect(global.fetch).toHaveBeenCalledWith(
+  expect(fetch).toHaveBeenCalledWith(
     'http://localhost:3000/snapguidist',
     {
       body: '{"name":"name","tree":"example"}',
@@ -35,7 +42,7 @@ test('fires a PUT when update is true', () => {
   const update = true
   runTest(snapshot, update)
 
-  expect(global.fetch).toHaveBeenCalledWith(
+  expect(fetch).toHaveBeenCalledWith(
     'http://localhost:3000/snapguidist',
     {
       body: '{"name":"name","tree":"example"}',

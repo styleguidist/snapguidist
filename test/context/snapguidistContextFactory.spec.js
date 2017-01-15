@@ -24,6 +24,8 @@ jest.mock(
   () => (name, component) => `{"name":"${name}","tree":"${component}"}`
 )
 
+process.env.SNAPGUIDIST = { concurrentTests: 3 }
+
 test('exposes the expected API', () => {
   const context = snapguidistContextFactory()
   const { clear, listen, runTest } = context
