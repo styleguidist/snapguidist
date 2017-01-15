@@ -1,13 +1,7 @@
 import runTests from './runTests'
 import pubSubFactory from './pubSubFactory'
 
-export default function testQueueFactory({
-  size = 3,
-  batch: {
-    enabled: batchEnabled = true,
-    interval: batchInterval = 1500,
-  } = {},
-} = {}) {
+export default function testQueueFactory(size = 3, batchEnabled, batchInterval) {
   const pubSub = pubSubFactory()
   const { clearListeners, listen, notify } = pubSub
 

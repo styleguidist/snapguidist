@@ -2,9 +2,13 @@ import testQueueFactory from './testQueueFactory'
 import renderSnapshotTree from './renderSnapshotTree'
 
 export default function snapguidistFactory() {
-  const { concurrentTests } = process.env.SNAPGUIDIST
+  const {
+    concurrentTests,
+    batchEnabled,
+    batchInterval,
+  } = process.env.SNAPGUIDIST
 
-  const queue = testQueueFactory(concurrentTests)
+  const queue = testQueueFactory(concurrentTests, batchEnabled, batchInterval)
   const listeners = new Set()
   const cache = new Map()
 

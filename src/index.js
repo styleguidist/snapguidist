@@ -5,6 +5,8 @@ const SNAPGUIDIST_DEFAULTS = {
   concurrentTests: 3,
   serverHost: 'localhost',
   serverPort: 3000,
+  batchEnabled: true,
+  batchInterval: 1500,
 }
 
 function snapguidist(options) {

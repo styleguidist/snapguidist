@@ -1,8 +1,6 @@
 import testQueueFactory from '../../src/queue/testQueueFactory'
 import runTests from '../../src/queue/runTests'
 
-// TODO: Add test for batched execution!
-
 jest.mock(
   '../../src/queue/pubSubFactory',
   () => () => {
@@ -30,7 +28,16 @@ jest.mock(
   })
 )
 
-const mockSnapshot = '{"name":"name","tree":"snapshot"}'
+global.process = {
+  env: {
+    SNAPGUIDIST: {
+      batchEnabled: false,
+      batchInterval: 3000,
+    },
+  },
+}
+
+const tree = '{"snapshot"}'
 
 beforeEach(() => runTests.mockClear())
 
@@ -61,22 +68,22 @@ test('exposes the expected API', () => {
 test('starts the queue when adding a test', () => {
   const {
     addTest,
-  } = testQueueFactory({ batch: { enabled: false } })
+  } = testQueueFactory()
 
-  addTest('name', mockSnapshot)
+  addTest('name', tree)
   expect(runTests).toHaveBeenCalled()
 })
 
 test('passes `update` flag to runTest()', () => {
   const {
     addTest,
-  } = testQueueFactory({ batch: { enabled: false } })
+  } = testQueueFactory()
 
   const name = 'name'
   const update = true
-  const snapshots = [{ name, tree: mockSnapshot, update }]
+  const snapshots = [{ name, tree, update }]
 
-  addTest(name, mockSnapshot, update)
+  addTest(name, tree, update)
   expect(runTests).toHaveBeenCalledWith(snapshots)
 })
 
@@ -84,12 +91,12 @@ test('notifies listeners when a test return its result', () => {
   const {
     addTest,
     listen,
-  } = testQueueFactory({ batch: { enabled: false } })
+  } = testQueueFactory()
 
   const listener = jest.fn()
   listen(listener)
   const name = 'name'
-  addTest(name, mockSnapshot)
+  addTest(name, tree)
 
   return Promise.resolve().then(() => {
     expect(listener).toHaveBeenCalledWith({ [name]: { pass: true } })
@@ -106,7 +113,7 @@ test('returns a `unregister` function when invoking listen()', () => {
   const unregister = listen(listener)
   expect(typeof unregister).toBe('function')
   unregister()
-  addTest('name', mockSnapshot)
+  addTest('name', tree)
 
   return Promise.resolve().then(() => {
     expect(listener).not.toHaveBeenCalled()
@@ -126,7 +133,7 @@ test('removes all listeners', () => {
   listen(listener2)
 
   clear()
-  addTest('name', mockSnapshot)
+  addTest('name', tree)
 
   return Promise.resolve().then(() => {
     expect(listener1).not.toHaveBeenCalled()
