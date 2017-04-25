@@ -1,8 +1,8 @@
 {
   "name": "snapguidist",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Snapshot testing for React Styleguidist",
-  "repository": "https://github.com/MicheleBertoli/snapguidist.git",
+  "repository": "https://github.com/styleguidist/snapguidist.git",
   "main": "./src/index.js",
   "files": [
     "src"
@@ -56,7 +56,7 @@
     "codemirror": ">=5.20.2",
     "react": ">=15",
     "react-codemirror": ">=0.2.6",
-    "react-styleguidist": ">=4.5",
+    "react-styleguidist": ">=4.5 <5",
     "webpack": ">=1.14.0"
   },
   "lint-staged": {

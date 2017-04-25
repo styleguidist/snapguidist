@@ -54,7 +54,7 @@ The package overrides a few `rsg` components from `react-styleguidist`:
 
 Therefore, you won't be able to override them again in your project.
 
-We are working with [@sapegin](https://github.com/sapegin/) (the author of `react-styleguist`) to find a solution.
+We are working with [@sapegin](https://github.com/sapegin/) (the author of `react-styleguist`) to find a [solution](https://github.com/styleguidist/react-styleguidist/issues/354).
 
 # Example
 
@@ -73,4 +73,3 @@ If you want contribute to `snapguidist`, start the example from the root folder 
 ```bash
 yarn start
 ```
-
