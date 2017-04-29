@@ -1,4 +1,4 @@
-[![npm version](https://badge.fury.io/js/snapguidist.svg)](https://badge.fury.io/js/snapguidist) [![Build Status](https://travis-ci.org/MicheleBertoli/snapguidist.svg?branch=master)](https://travis-ci.org/MicheleBertoli/snapguidist)
+[![npm version](https://badge.fury.io/js/snapguidist.svg)](https://badge.fury.io/js/snapguidist) [![Build Status](https://travis-ci.org/styleguidist/snapguidist.svg?branch=master)](https://travis-ci.org/styleguidist/snapguidist)
 
 # Snapguidist
 Snapshot testing for [React Styleguidist](https://github.com/styleguidist/react-styleguidist).
