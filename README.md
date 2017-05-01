@@ -1,13 +1,15 @@
-[![npm version](https://badge.fury.io/js/snapguidist.svg)](https://badge.fury.io/js/snapguidist) [![Build Status](https://travis-ci.org/styleguidist/snapguidist.svg?branch=master)](https://travis-ci.org/styleguidist/snapguidist)
+[![npm version](https://badge.fury.io/js/snapguidist.svg)](https://badge.fury.io/js/snapguidist)
+[![Build Status](https://travis-ci.org/styleguidist/snapguidist.svg?branch=master)](https://travis-ci.org/styleguidist/snapguidist)
 
-# Snapguidist
-Snapshot testing for [React Styleguidist](https://github.com/styleguidist/react-styleguidist).
+<img alt="Preview" src="logo.png" width="450px" height="166px" />
 
-# Demo
+[Jest](https://github.com/facebook/jest) Snapshot Testing for [React Styleguidist](https://github.com/styleguidist/react-styleguidist).
+
+## Demo
 
 ![Demo](demo.gif)
 
-# Getting Started
+## Getting Started
 
 To add `snapguidist` to your `react-styleguidist` configuration, follow these steps:
 
@@ -43,7 +45,7 @@ To add `snapguidist` to your `react-styleguidist` configuration, follow these st
     +})
     ```
 
-## Caveats
+### Caveats
 
 This is the first release of `snapguidist`, should you experience any issue please let us know.
 
@@ -56,7 +58,7 @@ Therefore, you won't be able to override them again in your project.
 
 We are working with [@sapegin](https://github.com/sapegin/) (the author of `react-styleguist`) to find a [solution](https://github.com/styleguidist/react-styleguidist/issues/354).
 
-# Example
+## Example
 
 To run the example, install the dependencies and start it:
 
@@ -66,10 +68,14 @@ yarn install
 yarn start
 ```
 
-# Development
+## Development
 
 If you want contribute to `snapguidist`, start the example from the root folder to enable the *hot-reload*:
 
 ```bash
 yarn start
 ```
+
+### Credits
+
+Logo by [@SaraVieira](https://github.com/SaraVieira)
