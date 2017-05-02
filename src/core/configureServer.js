@@ -7,16 +7,16 @@ const configureServer = (app) => {
   app.use(bodyParser.json())
 
   app.post('/snapguidist', (req, res) => {
-    const result = snapshot(req.body.name, req.body.tree)
+    const snapshots = req.body
 
-    res.send(result)
-  })
+    const results = snapshots.reduce((acc, snapshotInfo) => {
+      const { name, tree, update } = snapshotInfo
+      const renderedTree = JSON.parse(tree)
+      acc[name] = snapshot(name, renderedTree, update)
+      return acc
+    }, {})
 
-  app.put('/snapguidist', (req, res) => {
-    const update = true
-    const result = snapshot(req.body.name, req.body.tree, update)
-
-    res.send(result)
+    res.send(results)
   })
 }
 

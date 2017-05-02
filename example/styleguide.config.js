@@ -1,7 +1,10 @@
 const path = require('path')
 const snapguidist = require('snapguidist')
 
-module.exports = snapguidist({
+const config = {
+  concurrentTests: 4,
+}
+module.exports = snapguidist(config)({
   title: 'Snapguidist Styleguide',
 
   components: 'src/components/**/[A-Z]*.js',

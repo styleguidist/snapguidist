@@ -53,14 +53,14 @@ class Test extends Component {
             <div>
               <button
                 className="snapguidist__button"
-                disabled={this.props.isFetching}
+                disabled={this.props.isQueuing}
                 onClick={this.handleClick}
               >
                 Update
               </button>
               <button
                 className="snapguidist__button"
-                disabled={this.props.isFetching}
+                disabled={this.props.isQueuing}
                 onClick={this.toggle}
               >
                 <span className={arrowClasses}>▼</span>
@@ -86,7 +86,7 @@ class Test extends Component {
 }
 
 Test.propTypes = {
-  isFetching: PropTypes.bool,
+  isQueuing: PropTypes.bool,
   onClick: PropTypes.func,
   response: PropTypes.shape({
     actual: PropTypes.string,

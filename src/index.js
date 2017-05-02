@@ -1,37 +1,51 @@
 const updateWebpackConfig = require('./core/updateWebpackConfig')
 const configureServer = require('./core/configureServer')
 
-function snapguidist(config = {}) {
-  const serverInfo = {
-    host: config.serverHost || 'localhost',
-    port: config.serverPort || 3000,
-  }
+const SNAPGUIDIST_DEFAULTS = {
+  concurrentTests: 3,
+  serverHost: 'localhost',
+  serverPort: 3000,
+  batchEnabled: true,
+  batchInterval: 1500,
+}
 
-  const {
-    updateWebpackConfig: _updateWebpackConfig,
-    configureServer: _configureServer,
-  } = config
+function snapguidist(options) {
+  return (config) => {
+    const { serverHost, serverPort } = config
+    const snapguidistOptions = Object.assign({}, SNAPGUIDIST_DEFAULTS, options)
 
-  return Object.assign(config,
-    {
-
-      updateWebpackConfig(webpackConfig, env) {
-        let final = updateWebpackConfig(webpackConfig, env, serverInfo)
-        if (_updateWebpackConfig) {
-          final = _updateWebpackConfig(final, env)
-        }
-        return final
-      },
-
-      configureServer(app, env) {
-        configureServer(app, env)
-        if (_configureServer) {
-          _configureServer(app, env)
-        }
-      },
-
+    if (serverHost) {
+      snapguidistOptions.serverHost = serverHost
     }
-  )
+
+    if (serverPort) {
+      snapguidistOptions.serverPort = serverPort
+    }
+
+    const {
+      updateWebpackConfig: _updateWebpackConfig,
+      configureServer: _configureServer,
+    } = config
+
+    return Object.assign(config,
+      {
+        updateWebpackConfig(webpackConfig, env) {
+          let final = updateWebpackConfig(webpackConfig, env, snapguidistOptions)
+          if (_updateWebpackConfig) {
+            final = _updateWebpackConfig(final, env)
+          }
+          return final
+        },
+
+        configureServer(app, env) {
+          configureServer(app, env)
+          if (_configureServer) {
+            _configureServer(app, env)
+          }
+        },
+      }
+    )
+  }
 }
 
 module.exports = snapguidist

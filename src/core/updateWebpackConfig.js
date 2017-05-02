@@ -5,20 +5,18 @@ const srcFolder = path.join(__dirname, '..')
 const componentPath = component => path.join(srcFolder, 'components', component)
 const stylesPath = style => path.join(srcFolder, style)
 
+const STYLEGUIDE_RENDERER = 'rsg-components/StyleGuide/StyleGuideRenderer'
 const PLAYGROUND_RENDERER = 'rsg-components/Playground/PlaygroundRenderer'
 const PLAYGROUND_PREVIEW = 'rsg-components/Preview'
 
-const updateWebpackConfig = (webpackConfig, env, serverInfo) => {
+const updateWebpackConfig = (webpackConfig, env, snapguidistOptions) => {
   webpackConfig.module.loaders.push(
     {
       test: /\.jsx?$/,
       include: srcFolder,
       loader: 'babel',
       query: {
-        presets: [
-          'es2015',
-          'react',
-        ],
+        presets: ['es2015', 'react'],
       },
     },
     {
@@ -35,12 +33,13 @@ const updateWebpackConfig = (webpackConfig, env, serverInfo) => {
   )
 
   Object.assign(webpackConfig.resolve.alias, {
+    [STYLEGUIDE_RENDERER]: componentPath('StyleGuideRenderer'),
     [PLAYGROUND_RENDERER]: componentPath('PlaygroundRenderer'),
     [PLAYGROUND_PREVIEW]: componentPath('Preview'),
   })
 
   webpackConfig.plugins.push(new webpack.DefinePlugin({
-    'process.env.SNAPGUIDIST': JSON.stringify(serverInfo),
+    'process.env.SNAPGUIDIST': JSON.stringify(snapguidistOptions),
   }))
 
   return webpackConfig
