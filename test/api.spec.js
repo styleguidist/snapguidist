@@ -1,3 +1,4 @@
+import fetch from 'unfetch'
 import api from '../src/api'
 
 jest.mock(
@@ -5,8 +6,9 @@ jest.mock(
   () => ({ create: example => ({ toJSON: () => example }) })
 )
 
-global.fetch = jest.fn(
-  () => ({ then: () => ({ catch: () => {} }) })
+jest.mock(
+  'unfetch',
+  () => jest.fn(() => Promise.resolve(({ json: () => {} })))
 )
 
 process.env.SNAPGUIDIST = {}
@@ -18,7 +20,7 @@ test('fires a POST when update is false', () => {
   const update = false
   api.runTest(name, example, update)
 
-  expect(global.fetch).toHaveBeenCalledWith(
+  expect(fetch).toHaveBeenCalledWith(
     'http://localhost:3000/snapguidist',
     {
       body: '{"name":"name","tree":"example"}',
@@ -34,7 +36,7 @@ test('fires a PUT when update is true', () => {
   const update = true
   api.runTest(name, example, update)
 
-  expect(global.fetch).toHaveBeenCalledWith(
+  expect(fetch).toHaveBeenCalledWith(
     'http://localhost:3000/snapguidist',
     {
       body: '{"name":"name","tree":"example"}',
