@@ -1,21 +1,20 @@
 const path = require('path')
-const snapguidist = require(path.join(__dirname, '..', 'src', 'index'))
+const snapguidist = require(path.join(__dirname, '..', 'lib', 'index'))
 
 module.exports = snapguidist({
   title: '[dev] Snapguidist Styleguide',
 
   components: 'src/components/**/[A-Z]*.js',
 
-  updateWebpackConfig(webpackConfig) {
-    webpackConfig.devtool = 'source-map'
+  webpackConfig: {
+    devtool: 'source-map',
 
-    const sourceFolder = path.resolve(__dirname, 'src')
-    webpackConfig.module.loaders.push({
-      test: /\.jsx?$/,
-      include: sourceFolder,
-      loader: 'babel',
-    })
-
-    return webpackConfig
+    module: {
+      loaders: [{
+        test: /\.jsx?$/,
+        include: path.resolve(__dirname, 'src'),
+        loader: 'babel',
+      }],
+    },
   },
 })

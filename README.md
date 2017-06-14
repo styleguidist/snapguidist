@@ -21,42 +21,21 @@ To add `snapguidist` to your `react-styleguidist` configuration, follow these st
 
 2. enhance the webpack configuration in `styleguide.config.js`:
 
-    ```diff
-     const path = require('path')
-    +const snapguidist = require('snapguidist')
-
-    -module.exports = {
-    +module.exports = snapguidist({
-      title: 'Snapguidist Styleguide',
-
-      components: 'src/components/**/[A-Z]*.js',
-
-      updateWebpackConfig(webpackConfig) {
-        const sourceFolder = path.resolve(__dirname, 'src')
-        webpackConfig.module.loaders.push({
-          test: /\.jsx?$/,
-          include: sourceFolder,
-          loader: 'babel',
-        })
-
-        return webpackConfig
+  ```diff
+   const loaders = require('loaders');
+  +const snapguidist = require('snapguidist');
+  -module.exports = {
+  +module.exports = snapguidist({
+    components: 'src/components/**/[A-Z]*.js',
+    defaultExample: true,
+    webpackConfig: {
+      module: {
+        loaders: loaders.all,
       },
-    -}
-    +})
-    ```
-
-### Caveats
-
-This is the first release of `snapguidist`, should you experience any issue please let us know.
-
-The package overrides a few `rsg` components from `react-styleguidist`:
-
- * `rsg-components/Playground/PlaygroundRenderer`
- * `rsg-components/Preview`
-
-Therefore, you won't be able to override them again in your project.
-
-We are working with [@sapegin](https://github.com/sapegin/) (the author of `react-styleguist`) to find a [solution](https://github.com/styleguidist/react-styleguidist/issues/354).
+    },
+  -};
+  +});
+  ```
 
 ## Example
 
@@ -70,10 +49,12 @@ yarn start
 
 ## Development
 
-If you want contribute to `snapguidist`, start the example from the root folder to enable the *hot-reload*:
+> Any contribution to `snapguidist` is highly appreciated.
+
+Run the following command from the root folder to enable the *hot-reload*:
 
 ```bash
-yarn start
+yarn build:watch & yarn start
 ```
 
 ### Credits

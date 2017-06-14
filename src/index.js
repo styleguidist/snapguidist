@@ -4,18 +4,18 @@ const configureServer = require('./core/configureServer')
 function snapguidist(config = {}) {
   const serverInfo = {
     host: config.serverHost || 'localhost',
-    port: config.serverPort || 3000,
+    port: config.serverPort || 6060,
   }
 
   const {
-    updateWebpackConfig: _updateWebpackConfig,
+    dangerouslyUpdateWebpackConfig: _updateWebpackConfig,
     configureServer: _configureServer,
   } = config
 
   return Object.assign(config,
     {
 
-      updateWebpackConfig(webpackConfig, env) {
+      dangerouslyUpdateWebpackConfig(webpackConfig, env) {
         let final = updateWebpackConfig(webpackConfig, env, serverInfo)
         if (_updateWebpackConfig) {
           final = _updateWebpackConfig(final, env)

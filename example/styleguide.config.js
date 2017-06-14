@@ -6,14 +6,13 @@ module.exports = snapguidist({
 
   components: 'src/components/**/[A-Z]*.js',
 
-  updateWebpackConfig(webpackConfig) {
-    const sourceFolder = path.resolve(__dirname, 'src')
-    webpackConfig.module.loaders.push({
-      test: /\.jsx?$/,
-      include: sourceFolder,
-      loader: 'babel',
-    })
-
-    return webpackConfig
+  webpackConfig: {
+    module: {
+      loaders: [{
+        test: /\.jsx?$/,
+        include: path.resolve(__dirname, 'src'),
+        loader: 'babel',
+      }],
+    },
   },
 })

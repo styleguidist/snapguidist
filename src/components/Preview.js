@@ -1,5 +1,6 @@
-import React, { Component, PropTypes } from 'react'
-import Preview from 'react-styleguidist/src/rsg-components/Preview'
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import Preview from 'react-styleguidist/lib/rsg-components/Preview'
 import api from '../api'
 import Test from './Test'
 
@@ -15,12 +16,12 @@ class SnapguidistPreview extends Component {
   }
 
   componentDidMount() {
-    this.runTest()
+    window.requestAnimationFrame(() => this.runTest())
   }
 
   componentDidUpdate(prevProps) {
     if (prevProps.code !== this.props.code) {
-      this.runTest()
+      window.requestAnimationFrame(() => this.runTest())
     }
   }
 
