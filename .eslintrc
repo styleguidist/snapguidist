@@ -17,6 +17,7 @@
     }],
     "no-param-reassign": ["error", { "props": false }],
     "react/jsx-filename-extension": ["error", { "extensions": [".js"] }],
-    "import/no-extraneous-dependencies": ["error", { "devDependencies": ["example/**/*", "test/**/*"] }]
+    "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
+    "no-plusplus": "off"
   }
 }

@@ -6,10 +6,11 @@
     "start": "styleguidist server"
   },
   "devDependencies": {
-    "react": "15.4.1",
-    "react-dom": "15.4.1",
-    "react-styleguidist": "4.5.0",
-    "snapguidist": "1.1.0",
+    "prop-types": "15.5.10",
+    "react": "15.6.1",
+    "react-dom": "15.6.1",
+    "react-styleguidist": "5.4.4",
+    "snapguidist": "next",
     "webpack": "1.14.0"
   }
 }

@@ -3,8 +3,10 @@ import { shallow, mount } from 'enzyme'
 import SnapguidistPreview from '../../src/components/Preview'
 import api from '../../src/api'
 
+window.requestAnimationFrame = fn => fn()
+
 jest.mock(
-  'react-styleguidist/src/rsg-components/Preview',
+  'react-styleguidist/lib/rsg-components/Preview',
   () => {
     const Preview = () => null
     return Preview

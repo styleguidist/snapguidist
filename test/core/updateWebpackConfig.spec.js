@@ -8,37 +8,22 @@ jest.mock(
   })
 )
 
-const srcFolder = path.join(__dirname, '..', '..')
+const libFolder = path.join(__dirname, '..', '..')
+const styleLoaders = '!!style-loader!css-loader!'
 
 test('enhances the webpack configuration', () => {
   const webpackConfig = {
     entry: [],
-    resolve: { alias: {} },
-    module: { loaders: [] },
     plugins: [],
+    resolve: { alias: {} },
   }
   const serverInfo = 'serverInfo'
   const expected = {
     entry: [
-      `${srcFolder}/src/styles.css`,
-      'codemirror/lib/codemirror.css',
-      'rsg-codemirror-theme.css',
+      `${styleLoaders}codemirror/lib/codemirror.css`,
+      `${styleLoaders}rsg-codemirror-theme.css`,
+      `${styleLoaders}${libFolder}/src/styles.css`,
     ],
-
-    module: {
-      loaders: [{
-        include: `${srcFolder}/src`,
-        loader: 'babel',
-        query: {
-          presets: ['es2015', 'react'],
-        },
-        test: /\.jsx?$/,
-      }, {
-        include: `${srcFolder}/src`,
-        loaders: ['style', 'css'],
-        test: /\.css$/,
-      }],
-    },
 
     plugins: [{
       definitions: {
@@ -48,8 +33,9 @@ test('enhances the webpack configuration', () => {
 
     resolve: {
       alias: {
-        'rsg-components/Playground/PlaygroundRenderer': `${srcFolder}/src/components/PlaygroundRenderer`,
-        'rsg-components/Preview': `${srcFolder}/src/components/Preview`,
+        'rsg-components/Playground/PlaygroundRenderer': 'react-styleguidist/lib/rsg-components/Playground/PlaygroundRenderer',
+        'rsg-components/Playground': `${libFolder}/src/components/Playground`,
+        'rsg-components/Preview': `${libFolder}/src/components/Preview`,
       },
     },
   }

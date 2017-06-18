@@ -53,6 +53,7 @@
 .snapguidist__label {
   color: #333;
   display: inline-block;
+  font-family: sans-serif;
   font-size: 11px;
   margin: 4px 0 0 2px;
   text-transform: uppercase;
