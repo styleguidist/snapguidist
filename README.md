@@ -1,5 +1,6 @@
-[![npm version](https://badge.fury.io/js/snapguidist.svg)](https://badge.fury.io/js/snapguidist)
 [![Build Status](https://travis-ci.org/styleguidist/snapguidist.svg?branch=master)](https://travis-ci.org/styleguidist/snapguidist)
+[![NPM version](https://img.shields.io/npm/v/snapguidist.svg)](https://www.npmjs.com/package/snapguidist)
+[![tested with jest](https://img.shields.io/badge/tested_with-jest-99424f.svg)](https://github.com/facebook/jest)
 
 <img alt="Preview" src="logo.png" width="450px" height="166px" />
 
