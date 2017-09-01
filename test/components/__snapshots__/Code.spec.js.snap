@@ -1,41 +1,47 @@
-exports[`test works with diff 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`works with diff 1`] = `
 <div>
   <div
-    className="snapguidist__label">
+    className="snapguidist__label"
+  >
     label
   </div>
   <div
-    className="snapguidist__code">
-    <Component
+    className="snapguidist__code"
+  >
+    <CodeMirror
       options={
         Object {
           "mode": "diff",
           "theme": "theme",
         }
       }
-      preserveScrollPosition={false}
-      value="value" />
+      value="value"
+    />
   </div>
 </div>
 `;
 
-exports[`test works with jsx 1`] = `
+exports[`works with jsx 1`] = `
 <div>
   <div
-    className="snapguidist__label">
+    className="snapguidist__label"
+  >
     label
   </div>
   <div
-    className="snapguidist__code">
-    <Component
+    className="snapguidist__code"
+  >
+    <CodeMirror
       options={
         Object {
           "mode": "jsx",
           "theme": "theme",
         }
       }
-      preserveScrollPosition={false}
-      value="value" />
+      value="value"
+    />
   </div>
 </div>
 `;

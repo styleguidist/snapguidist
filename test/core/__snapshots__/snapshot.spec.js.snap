@@ -1,4 +1,6 @@
-exports[`test fails if the type changes 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`fails if the type changes 1`] = `
 Object {
   "actual": "<span>
   <span />
