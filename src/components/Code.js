@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Codemirror from 'react-codemirror'
+import CodeMirror from 'react-codemirror2'
 import 'codemirror/mode/diff/diff'
 import 'codemirror/mode/jsx/jsx'
 
@@ -14,7 +14,7 @@ const Code = (props, context) => {
     <div>
       <div className="snapguidist__label">{props.label}</div>
       <div className="snapguidist__code">
-        <Codemirror value={props.value} options={options} />
+        <CodeMirror value={props.value} options={options} />
       </div>
     </div>
   )
