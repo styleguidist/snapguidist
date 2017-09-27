@@ -6,13 +6,14 @@ exports[`test works with diff 1`] = `
   </div>
   <div
     className="snapguidist__code">
-    <CodeMirror
+    <Component
       options={
         Object {
           "mode": "diff",
           "theme": "theme",
         }
       }
+      preserveScrollPosition={false}
       value="value" />
   </div>
 </div>
@@ -26,13 +27,14 @@ exports[`test works with jsx 1`] = `
   </div>
   <div
     className="snapguidist__code">
-    <CodeMirror
+    <Component
       options={
         Object {
           "mode": "jsx",
           "theme": "theme",
         }
       }
+      preserveScrollPosition={false}
       value="value" />
   </div>
 </div>
