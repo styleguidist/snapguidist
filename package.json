@@ -56,7 +56,7 @@
     "cors": "2.8.1",
     "jest-diff": "18.1.0",
     "jest-snapshot": "18.1.0",
-    "react-codemirror2": "2.0.0",
+    "react-codemirror2": "2.0.1",
     "react-test-renderer": "15.6.1",
     "strip-ansi": "3.0.1",
     "unfetch": "2.1.2"
