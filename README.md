@@ -23,7 +23,6 @@ To add `snapguidist` to your `react-styleguidist` configuration, follow these st
 2. enhance the webpack configuration in `styleguide.config.js`:
 
   ```diff
-   const loaders = require('loaders');
   +const snapguidist = require('snapguidist');
   -module.exports = {
   +module.exports = snapguidist({
@@ -31,7 +30,17 @@ To add `snapguidist` to your `react-styleguidist` configuration, follow these st
     defaultExample: true,
     webpackConfig: {
       module: {
-        loaders: loaders.all,
+        rules: [
+          {
+            test: /\.jsx?$/,
+            exclude: /node_modules/,
+            loader: 'babel-loader',
+          },
+          {
+            test: /\.css$/,
+            loader: 'style-loader!css-loader',
+          },
+        ],
       },
     },
   -};

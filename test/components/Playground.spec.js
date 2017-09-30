@@ -3,7 +3,7 @@ import { shallow } from 'enzyme'
 import SnapguidistPlayground from '../../src/components/Playground'
 
 jest.mock(
-  'react-styleguidist/lib/rsg-components/Playground/Playground',
+  'react-styleguidist/lib/rsg-components/Playground',
   () => {
     const Playground = () => null
     return Playground

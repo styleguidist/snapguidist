@@ -10,10 +10,10 @@ module.exports = snapguidist({
     devtool: 'source-map',
 
     module: {
-      loaders: [{
+      rules: [{
         test: /\.jsx?$/,
         include: path.resolve(__dirname, 'src'),
-        loader: 'babel',
+        loader: 'babel-loader',
       }],
     },
   },
