@@ -1,8 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Codemirror from 'react-codemirror'
-import 'codemirror/mode/diff/diff'
-import 'codemirror/mode/jsx/jsx'
+import Codemirror from 'react-codemirror2'
+
+require('codemirror/mode/diff/diff')
+require('codemirror/mode/jsx/jsx')
 
 const Code = (props, context) => {
   const options = {
