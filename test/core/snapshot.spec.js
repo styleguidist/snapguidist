@@ -45,8 +45,9 @@ test('passes if null, first time', () => {
 })
 
 test('passes if new and old are null', () => {
-  snapshot('name', null)
-  const result = snapshot('name1', null)
+  const name = 'both-null'
+  snapshot(name, null)
+  const result = snapshot(name, null)
 
   expect(result).toMatchSnapshot()
 })
