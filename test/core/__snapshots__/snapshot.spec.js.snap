@@ -1,3 +1,23 @@
+exports[`test fails if new is null but old is not 1`] = `
+Object {
+  "actual": "null",
+  "count": 1,
+  "diff": "",
+  "expected": "<div />",
+  "pass": false,
+}
+`;
+
+exports[`test fails if old was null but new is not 1`] = `
+Object {
+  "actual": "<div />",
+  "count": 1,
+  "diff": "",
+  "expected": "null",
+  "pass": false,
+}
+`;
+
 exports[`test fails if the type changes 1`] = `
 Object {
   "actual": "<span>
@@ -17,5 +37,11 @@ Object {
   <span />
 </div>",
   "pass": false,
+}
+`;
+
+exports[`test passes if new and old are null 1`] = `
+Object {
+  "pass": true,
 }
 `;
