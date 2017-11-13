@@ -10,14 +10,16 @@ const typeOf = { value: Symbol.for('react.test.json') }
 const cleanUp = (result) => {
   result.actual = result.actual.trim()
   result.expected = result.expected.trim()
-  result.diff = result.diff.replace(/\n[ ]+\n/g, '\n\n')
+  result.diff = (result.diff || '').replace(/\n[ ]+\n/g, '\n\n')
 }
 
 const snapshot = (name, tree, update) => {
   const destination = path.resolve(base, `${name}.snap`)
   const state = new SnapshotState(null, update, destination)
 
-  Object.defineProperty(tree, '$$typeof', typeOf)
+  if (tree) {
+    Object.defineProperty(tree, '$$typeof', typeOf)
+  }
 
   const result = state.match(name, tree)
   state.save(update)
