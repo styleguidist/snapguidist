@@ -27,6 +27,12 @@ Code.propTypes = {
   value: PropTypes.string,
 }
 
+Code.defaultProps = {
+  diff: false,
+  label: '',
+  value: '',
+}
+
 Code.contextTypes = {
   config: PropTypes.object.isRequired,
 }
