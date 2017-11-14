@@ -13,7 +13,7 @@ const configureServer = (app) => {
   })
 
   app.put('/snapguidist', (req, res) => {
-    const update = true
+    const update = 'all'
     const result = snapshot(req.body.name, req.body.tree, update)
 
     res.send(result)
