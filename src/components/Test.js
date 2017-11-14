@@ -4,7 +4,6 @@ import classnames from 'classnames'
 import Code from './Code'
 
 class Test extends Component {
-
   constructor(props) {
     super(props)
 
@@ -83,7 +82,6 @@ class Test extends Component {
       </div>
     )
   }
-
 }
 
 Test.propTypes = {
@@ -96,6 +94,12 @@ Test.propTypes = {
     expected: PropTypes.string,
     pass: PropTypes.bool,
   }),
+}
+
+Test.defaultProps = {
+  isFetching: false,
+  onClick: () => {},
+  response: null,
 }
 
 export default Test

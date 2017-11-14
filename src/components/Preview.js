@@ -5,7 +5,6 @@ import api from '../api'
 import Test from './Test'
 
 class SnapguidistPreview extends Component {
-
   constructor(props) {
     super(props)
 
