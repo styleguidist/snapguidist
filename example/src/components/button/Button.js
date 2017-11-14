@@ -7,4 +7,8 @@ Button.propTypes = {
   text: PropTypes.string,
 }
 
+Button.defaultProps = {
+  text: '',
+}
+
 export default Button

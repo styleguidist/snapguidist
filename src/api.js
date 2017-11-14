@@ -17,8 +17,8 @@ const api = {
         tree: renderer.create(example).toJSON(),
       }),
     })
-    .then(response => response.json())
-    .catch(() => console.warn('Ouch, is the Snapguidist server up?')) // eslint-disable-line
+      .then(response => response.json())
+      .catch(() => console.warn('Ouch, is the Snapguidist server up?')) // eslint-disable-line
   },
 
 }

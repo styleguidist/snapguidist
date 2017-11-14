@@ -11,9 +11,14 @@ afterAll(() => {
 
 test('passes if new', () => {
   const tree = { type: 'div' }
-  const result = snapshot('name', tree)
+  const result = snapshot('name', tree, 'new')
 
-  expect(result).toEqual({ pass: true })
+  expect(result).toEqual({
+    actual: '',
+    count: 1,
+    expected: '',
+    pass: true,
+  })
 })
 
 test('fails if the type changes', () => {
@@ -26,13 +31,18 @@ test('fails if the type changes', () => {
   expect(result).toMatchSnapshot()
 })
 
-test('does not fail if update is true', () => {
+test('does not fail if update is "all"', () => {
   const tree = { type: 'div' }
   snapshot('name', tree)
 
   tree.type = 'span'
-  const update = true
+  const update = 'all'
   const result = snapshot('name', tree, update)
 
-  expect(result).toEqual({ pass: true })
+  expect(result).toEqual({
+    actual: '',
+    count: 1,
+    expected: '',
+    pass: true,
+  })
 })

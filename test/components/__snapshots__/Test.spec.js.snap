@@ -1,20 +1,26 @@
-exports[`test works on toggle 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`works on toggle 1`] = `
 <div
-  className="snapguidist__test snapguidist__test--fail snapguidist__test--expanded">
+  className="snapguidist__test snapguidist__test--fail snapguidist__test--expanded"
+>
   <div>
     <div>
       <button
         className="snapguidist__button"
         disabled={false}
-        onClick={[Function]}>
+        onClick={[Function]}
+      >
         Update
       </button>
       <button
         className="snapguidist__button"
         disabled={false}
-        onClick={[Function]}>
+        onClick={[Function]}
+      >
         <span
-          className="snapguidist__arrow snapguidist__arrow--expanded">
+          className="snapguidist__arrow snapguidist__arrow--expanded"
+        >
           ▼
         </span>
       </button>
@@ -22,34 +28,42 @@ exports[`test works on toggle 1`] = `
     <div>
       <div>
         <Code
+          diff={false}
           label="Actual"
-          value="actual" />
+          value="actual"
+        />
         <Code
+          diff={false}
           label="Expected"
-          value="expected" />
+          value="expected"
+        />
       </div>
     </div>
   </div>
 </div>
 `;
 
-exports[`test works on update 1`] = `
+exports[`works on update 1`] = `
 <div
-  className="snapguidist__test snapguidist__test--fail">
+  className="snapguidist__test snapguidist__test--fail"
+>
   <div>
     <div>
       <button
         className="snapguidist__button"
         disabled={false}
-        onClick={[Function]}>
+        onClick={[Function]}
+      >
         Update
       </button>
       <button
         className="snapguidist__button"
         disabled={false}
-        onClick={[Function]}>
+        onClick={[Function]}
+      >
         <span
-          className="snapguidist__arrow">
+          className="snapguidist__arrow"
+        >
           ▼
         </span>
       </button>
@@ -57,34 +71,42 @@ exports[`test works on update 1`] = `
     <div>
       <div>
         <Code
+          diff={false}
           label="Actual"
-          value="actual" />
+          value="actual"
+        />
         <Code
+          diff={false}
           label="Expected"
-          value="expected" />
+          value="expected"
+        />
       </div>
     </div>
   </div>
 </div>
 `;
 
-exports[`test works when fail, with diff 1`] = `
+exports[`works when fail, with diff 1`] = `
 <div
-  className="snapguidist__test snapguidist__test--fail">
+  className="snapguidist__test snapguidist__test--fail"
+>
   <div>
     <div>
       <button
         className="snapguidist__button"
         disabled={false}
-        onClick={[Function]}>
+        onClick={[Function]}
+      >
         Update
       </button>
       <button
         className="snapguidist__button"
         disabled={false}
-        onClick={[Function]}>
+        onClick={[Function]}
+      >
         <span
-          className="snapguidist__arrow">
+          className="snapguidist__arrow"
+        >
           ▼
         </span>
       </button>
@@ -92,34 +114,42 @@ exports[`test works when fail, with diff 1`] = `
     <div>
       <div>
         <Code
+          diff={false}
           label="Actual"
-          value="actual" />
+          value="actual"
+        />
         <Code
+          diff={false}
           label="Expected"
-          value="expected" />
+          value="expected"
+        />
       </div>
     </div>
   </div>
 </div>
 `;
 
-exports[`test works when fail, without diff) 1`] = `
+exports[`works when fail, without diff) 1`] = `
 <div
-  className="snapguidist__test snapguidist__test--fail">
+  className="snapguidist__test snapguidist__test--fail"
+>
   <div>
     <div>
       <button
         className="snapguidist__button"
         disabled={false}
-        onClick={[Function]}>
+        onClick={[Function]}
+      >
         Update
       </button>
       <button
         className="snapguidist__button"
         disabled={false}
-        onClick={[Function]}>
+        onClick={[Function]}
+      >
         <span
-          className="snapguidist__arrow">
+          className="snapguidist__arrow"
+        >
           ▼
         </span>
       </button>
@@ -128,29 +158,34 @@ exports[`test works when fail, without diff) 1`] = `
       <Code
         diff={true}
         label="Difference"
-        value="diff" />
+        value="diff"
+      />
     </div>
   </div>
 </div>
 `;
 
-exports[`test works when is fetching 1`] = `
+exports[`works when is fetching 1`] = `
 <div
-  className="snapguidist__test snapguidist__test--fail">
+  className="snapguidist__test snapguidist__test--fail"
+>
   <div>
     <div>
       <button
         className="snapguidist__button"
         disabled={true}
-        onClick={[Function]}>
+        onClick={[Function]}
+      >
         Update
       </button>
       <button
         className="snapguidist__button"
         disabled={true}
-        onClick={[Function]}>
+        onClick={[Function]}
+      >
         <span
-          className="snapguidist__arrow">
+          className="snapguidist__arrow"
+        >
           ▼
         </span>
       </button>
@@ -158,18 +193,23 @@ exports[`test works when is fetching 1`] = `
     <div>
       <div>
         <Code
+          diff={false}
           label="Actual"
-          value="actual" />
+          value="actual"
+        />
         <Code
+          diff={false}
           label="Expected"
-          value="expected" />
+          value="expected"
+        />
       </div>
     </div>
   </div>
 </div>
 `;
 
-exports[`test works when pass 1`] = `
+exports[`works when pass 1`] = `
 <div
-  className="snapguidist__test snapguidist__test--pass" />
+  className="snapguidist__test snapguidist__test--pass"
+/>
 `;

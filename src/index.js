@@ -12,7 +12,8 @@ function snapguidist(config = {}) {
     configureServer: _configureServer,
   } = config
 
-  return Object.assign(config,
+  return Object.assign(
+    config,
     {
 
       dangerouslyUpdateWebpackConfig(webpackConfig, env) {

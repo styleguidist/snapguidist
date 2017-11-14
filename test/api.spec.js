@@ -1,6 +1,7 @@
 import fetch from 'unfetch'
 import api from '../src/api'
 
+
 jest.mock(
   'react-test-renderer',
   () => ({ create: example => ({ toJSON: () => example }) })
