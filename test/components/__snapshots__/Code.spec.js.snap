@@ -9,7 +9,17 @@ exports[`works with diff 1`] = `
   </div>
   <div
     className="snapguidist__code"
-  />
+  >
+    <UnControlled
+      options={
+        Object {
+          "mode": "diff",
+          "theme": "theme",
+        }
+      }
+      value="value"
+    />
+  </div>
 </div>
 `;
 
@@ -22,6 +32,16 @@ exports[`works with jsx 1`] = `
   </div>
   <div
     className="snapguidist__code"
-  />
+  >
+    <UnControlled
+      options={
+        Object {
+          "mode": "jsx",
+          "theme": "theme",
+        }
+      }
+      value="value"
+    />
+  </div>
 </div>
 `;

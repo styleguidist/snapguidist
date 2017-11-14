@@ -21,7 +21,7 @@ test('calls snapshot with name and tree', () => {
 test('calls snapshot with name, tree and update', () => {
   const name = 'name'
   const tree = { type: 'div' }
-  const update = true
+  const update = 'all'
 
   return request(app)
     .put('/snapguidist')
