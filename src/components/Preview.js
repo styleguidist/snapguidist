@@ -46,7 +46,7 @@ class SnapguidistPreview extends Component {
 
   render() {
     return (
-      <div>
+      <div style={{ maxWidth: '100%' }}>
         <Preview {...this.props} evalInContext={this.evalInContext} />
         <Test
           isFetching={this.state.isFetching}

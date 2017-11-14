@@ -7,7 +7,7 @@
   /* background: linear-gradient(to right, #888888, #c3c3c3); */
   box-sizing: border-box;
   height: 0px;
-  margin: 15px -15px -15px;
+  margin: 15px -16px -16px;
   overflow: hidden;
   padding: 2px 4px 4px;
   transition: height .3s ease-out, background .5s ease;
@@ -21,7 +21,7 @@
 .snapguidist__test--fail {
   background: #ffaeae;
   /* background: linear-gradient(to right, #ff3d3d, #ffaeae); */
-  height: 25px;
+  height: 30px;
 }
 
 .snapguidist__test--expanded {
