@@ -15,7 +15,7 @@ const typeOf = { value: Symbol.for('react.test.json') }
  * }
  */
 
-const snapshot = (name, tree, updateSnapshot = 'none') => {
+const snapshot = (name, tree, updateSnapshot = 'new') => {
   const snapshotPath = path.resolve(base, `${name}.snap`)
   const state = new SnapshotState(null, { updateSnapshot, snapshotPath })
 

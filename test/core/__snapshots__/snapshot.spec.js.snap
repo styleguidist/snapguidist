@@ -10,8 +10,25 @@ Object {
 </span>
 ",
   "count": 1,
-  "diff": "  Comparing two different types of values. Expected null but received string.",
-  "expected": null,
+  "diff": "- Expected
++ Received
+
+  
+- <div>
++ <span>
+    Object {
+      \\"type\\": \\"span\\",
+    }
+- </div>
++ </span>
+  ",
+  "expected": "
+<div>
+  Object {
+    \\"type\\": \\"span\\",
+  }
+</div>
+",
   "pass": false,
 }
 `;

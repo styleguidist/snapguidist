@@ -26,7 +26,8 @@ test('fails if the type changes', () => {
   snapshot('name', tree)
 
   tree.type = 'span'
-  const result = snapshot('name', tree)
+  const update = 'none'
+  const result = snapshot('name', tree, update)
 
   expect(result).toMatchSnapshot()
 })
