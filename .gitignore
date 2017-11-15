@@ -1,6 +1,5 @@
 .opt-in
 .opt-out
 .snapguidist
-lib
 node_modules
 npm-debug.log
