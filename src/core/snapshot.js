@@ -9,20 +9,33 @@ const typeOf = { value: Symbol.for('react.test.json') }
 // Clean up result for better looking on CodeMirror
 const cleanUp = (result) => {
   result.actual = result.actual.trim()
-  result.expected = result.expected.trim()
-  result.diff = (result.diff || '').replace(/\n[ ]+\n/g, '\n\n')
+  result.expected = (result.expected || '').trim()
+  result.diff = (result.diff || '').replace(/\n[ ]+\n/g, '\n\n').trim()
+}
+
+const setTreeTypes = (obj) => {
+  if (!obj) return
+
+  if (Array.isArray(obj)) {
+    obj.forEach(setTreeTypes)
+  } else if (obj.type) {
+    setTreeTypes(obj.children)
+    Object.defineProperty(obj, '$$typeof', typeOf)
+  }
 }
 
 const snapshot = (name, tree, update) => {
-  const destination = path.resolve(base, `${name}.snap`)
-  const state = new SnapshotState(null, update, destination)
+  const snapshotPath = path.resolve(base, `${name}.snap`)
+  const state = new SnapshotState(null, {
+    snapshotPath,
+    updateSnapshot: update ? 'all' : 'new',
+  })
 
-  if (tree) {
-    Object.defineProperty(tree, '$$typeof', typeOf)
-  }
+  setTreeTypes(tree)
 
   const result = state.match(name, tree)
-  state.save(update)
+
+  state.save()
 
   if (!result.pass) {
     result.diff = stripAnsi(diff(result.expected, result.actual))

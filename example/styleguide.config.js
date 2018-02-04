@@ -11,7 +11,7 @@ module.exports = snapguidist({
       loaders: [{
         test: /\.jsx?$/,
         include: path.resolve(__dirname, 'src'),
-        loader: 'babel',
+        loader: 'babel-loader',
       }],
     },
   },
