@@ -42,7 +42,7 @@
     "jest": "22.1.4",
     "lint-staged": "3.2.5",
     "opt-cli": "1.5.1",
-    "prop-types": "15.5.10",
+    "prop-types": "15.6.0",
     "react": "16.2.0",
     "react-addons-test-utils": "15.6.0",
     "react-dom": "16.2.0",
