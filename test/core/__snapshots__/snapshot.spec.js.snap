@@ -34,8 +34,7 @@ Object {
 + <span>
     <span />
 - </div>
-+ </span>
-  ",
++ </span>",
   "expected": "<div>
   <span />
 </div>",
@@ -45,6 +44,9 @@ Object {
 
 exports[`passes if new and old are null 1`] = `
 Object {
+  "actual": "",
+  "count": 1,
+  "expected": "",
   "pass": true,
 }
 `;

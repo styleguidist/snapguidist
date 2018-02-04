@@ -13,7 +13,7 @@ test('passes if new', () => {
   const tree = { type: 'div' }
   const result = snapshot('name', tree)
 
-  expect(result).toEqual({ pass: true })
+  expect(result).toEqual(expect.objectContaining({ pass: true }))
 })
 
 test('fails if the type changes', () => {
@@ -34,14 +34,14 @@ test('does not fail if update is true', () => {
   const update = true
   const result = snapshot('name', tree, update)
 
-  expect(result).toEqual({ pass: true })
+  expect(result).toEqual(expect.objectContaining({ pass: true }))
 })
 
 test('passes if null, first time', () => {
   const tree = null
   const result = snapshot('name', tree)
 
-  expect(result).toEqual({ pass: true })
+  expect(result).toEqual(expect.objectContaining({ pass: true }))
 })
 
 test('passes if new and old are null', () => {
@@ -80,5 +80,5 @@ test('null tree does not fail if update is true', () => {
   const update = true
   const result = snapshot(name, null, update)
 
-  expect(result).toEqual({ pass: true })
+  expect(result).toEqual(expect.objectContaining({ pass: true }))
 })
