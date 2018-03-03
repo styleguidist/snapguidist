@@ -6,13 +6,12 @@ require('codemirror/mode/diff/diff')
 require('codemirror/mode/jsx/jsx')
 
 const Code = (props, context) => {
-  // As of react-styleguidist v6.2.0, highlightTheme is deprecated.
   const highlightTheme = context.config.highlightTheme ||
-    context.config.editorConfig.highlightTheme
+    context.config.editorConfig.theme
 
   const options = {
     mode: props.diff ? 'diff' : 'jsx',
-    theme: highlightTheme,
+    theme: highlightTheme || 'default',
   }
 
   return (

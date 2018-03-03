@@ -46,7 +46,7 @@
     "react": "16.2.0",
     "react-addons-test-utils": "15.6.0",
     "react-dom": "16.2.0",
-    "react-styleguidist": "6.2.2",
+    "react-styleguidist": "6.2.6",
     "supertest": "2.0.1",
     "webpack": "3.6.0"
   },
