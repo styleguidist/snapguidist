@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import Preview from 'react-styleguidist/lib/rsg-components/Preview'
+import Preview from 'react-styleguidist/lib/rsg-components/Preview/Preview'
 import api from '../api'
 import Test from './Test'
 

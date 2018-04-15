@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import Playground from 'react-styleguidist/lib/rsg-components/Playground'
+import Playground from 'react-styleguidist/lib/rsg-components/Playground/Playground'
 
 class SnapguidistPlayground extends Component {
 
