@@ -6,7 +6,7 @@ import api from '../../src/api'
 window.requestAnimationFrame = fn => fn()
 
 jest.mock(
-  'react-styleguidist/lib/rsg-components/Preview',
+  'react-styleguidist/lib/rsg-components/Preview/Preview',
   () => {
     const Preview = () => null
     return Preview
