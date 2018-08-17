@@ -25,7 +25,7 @@ const setTreeTypes = (obj) => {
 }
 
 const snapshot = (name, tree, update) => {
-  const snapshotPath = path.resolve(base, `${name}.snap`)
+  const snapshotPath = path.resolve(base, `${name}.sg`)
   const state = new SnapshotState(null, {
     snapshotPath,
     updateSnapshot: update ? 'all' : 'new',
