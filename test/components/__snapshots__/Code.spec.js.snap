@@ -10,7 +10,7 @@ exports[`works with diff 1`] = `
   <div
     className="snapguidist__code"
   >
-    <CodeMirror
+    <UnControlled
       options={
         Object {
           "mode": "diff",
@@ -33,7 +33,7 @@ exports[`works with jsx 1`] = `
   <div
     className="snapguidist__code"
   >
-    <CodeMirror
+    <UnControlled
       options={
         Object {
           "mode": "jsx",
