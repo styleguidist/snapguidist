@@ -4,8 +4,13 @@ exports[`fails if new is null but old is not 1`] = `
 Object {
   "actual": "null",
   "count": 1,
-  "diff": "",
+  "diff": "- Expected
++ Received
+
+- <div />
++ null",
   "expected": "<div />",
+  "key": "new-is-null 1",
   "pass": false,
 }
 `;
@@ -14,8 +19,13 @@ exports[`fails if old was null but new is not 1`] = `
 Object {
   "actual": "<div />",
   "count": 1,
-  "diff": "",
+  "diff": "- Expected
++ Received
+
+- null
++ <div />",
   "expected": "null",
+  "key": "old-was-null 1",
   "pass": false,
 }
 `;
@@ -38,6 +48,7 @@ Object {
   "expected": "<div>
   <span />
 </div>",
+  "key": "name 1",
   "pass": false,
 }
 `;
@@ -47,6 +58,7 @@ Object {
   "actual": "",
   "count": 1,
   "expected": "",
+  "key": "both-null 1",
   "pass": true,
 }
 `;

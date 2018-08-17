@@ -33,7 +33,10 @@ const snapshot = (name, tree, update) => {
 
   setTreeTypes(tree)
 
-  const result = state.match(name, tree)
+  const result = state.match({
+    testName: name,
+    received: tree,
+  })
 
   state.save()
 
