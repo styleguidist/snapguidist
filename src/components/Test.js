@@ -4,7 +4,6 @@ import classnames from 'classnames'
 import Code from './Code'
 
 class Test extends Component {
-
   constructor(props) {
     super(props)
 
@@ -23,7 +22,9 @@ class Test extends Component {
   }
 
   toggle() {
-    this.setState({ expanded: !this.state.expanded })
+    this.setState(prevState => ({
+      expanded: !prevState.expanded,
+    }))
   }
 
   isPass() {
@@ -49,12 +50,14 @@ class Test extends Component {
 
     return (
       <div className={containerClasses}>
-        {this.isFail() &&
+        {this.isFail()
+          && (
           <div>
             <div>
               <button
                 className="snapguidist__button"
                 disabled={this.props.isFetching}
+                type="button"
                 onClick={this.handleClick}
               >
                 Update
@@ -62,6 +65,7 @@ class Test extends Component {
               <button
                 className="snapguidist__button"
                 disabled={this.props.isFetching}
+                type="button"
                 onClick={this.toggle}
               >
                 <span className={arrowClasses}>▼</span>
@@ -79,11 +83,11 @@ class Test extends Component {
               }
             </div>
           </div>
+          )
         }
       </div>
     )
   }
-
 }
 
 Test.propTypes = {

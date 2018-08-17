@@ -55,4 +55,3 @@ test('works on toggle', () => {
 
   expect(toJSON(wrapper)).toMatchSnapshot()
 })
-

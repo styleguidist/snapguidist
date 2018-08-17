@@ -6,8 +6,8 @@ require('codemirror/mode/diff/diff')
 require('codemirror/mode/jsx/jsx')
 
 const Code = (props, context) => {
-  const highlightTheme = context.config.highlightTheme ||
-    context.config.editorConfig.theme
+  const highlightTheme = context.config.highlightTheme
+    || context.config.editorConfig.theme
 
   const options = {
     mode: props.diff ? 'diff' : 'jsx',

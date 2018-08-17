@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import Playground from 'react-styleguidist/lib/rsg-components/Playground/Playground'
 
 class SnapguidistPlayground extends Component {
-
   getChildContext() {
     return {
       name: `${this.props.name}-${this.props.index}`,
@@ -13,7 +12,6 @@ class SnapguidistPlayground extends Component {
   render() {
     return <Playground {...this.props} />
   }
-
 }
 
 SnapguidistPlayground.propTypes = {

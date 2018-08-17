@@ -30,8 +30,7 @@ function snapguidist(config = {}) {
         }
       },
 
-    }
-  )
+    })
 }
 
 module.exports = snapguidist

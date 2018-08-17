@@ -16,8 +16,12 @@
       "functions": "never"
     }],
     "no-param-reassign": ["error", { "props": false }],
+    "react/destructuring-assignment": ["error", "never"],
+    "react/forbid-prop-types": ["error", { checkContextTypes: false }],
     "react/jsx-filename-extension": ["error", { "extensions": [".js"] }],
+    "react/require-default-props": "off",
     "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
+    "import/no-unresolved": "off",
     "no-plusplus": "off"
   }
 }

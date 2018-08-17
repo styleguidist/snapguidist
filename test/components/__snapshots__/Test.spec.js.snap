@@ -10,6 +10,7 @@ exports[`works on toggle 1`] = `
         className="snapguidist__button"
         disabled={false}
         onClick={[Function]}
+        type="button"
       >
         Update
       </button>
@@ -17,6 +18,7 @@ exports[`works on toggle 1`] = `
         className="snapguidist__button"
         disabled={false}
         onClick={[Function]}
+        type="button"
       >
         <span
           className="snapguidist__arrow snapguidist__arrow--expanded"
@@ -51,6 +53,7 @@ exports[`works on update 1`] = `
         className="snapguidist__button"
         disabled={false}
         onClick={[Function]}
+        type="button"
       >
         Update
       </button>
@@ -58,6 +61,7 @@ exports[`works on update 1`] = `
         className="snapguidist__button"
         disabled={false}
         onClick={[Function]}
+        type="button"
       >
         <span
           className="snapguidist__arrow"
@@ -92,6 +96,7 @@ exports[`works when fail, with diff 1`] = `
         className="snapguidist__button"
         disabled={false}
         onClick={[Function]}
+        type="button"
       >
         Update
       </button>
@@ -99,6 +104,7 @@ exports[`works when fail, with diff 1`] = `
         className="snapguidist__button"
         disabled={false}
         onClick={[Function]}
+        type="button"
       >
         <span
           className="snapguidist__arrow"
@@ -133,6 +139,7 @@ exports[`works when fail, without diff) 1`] = `
         className="snapguidist__button"
         disabled={false}
         onClick={[Function]}
+        type="button"
       >
         Update
       </button>
@@ -140,6 +147,7 @@ exports[`works when fail, without diff) 1`] = `
         className="snapguidist__button"
         disabled={false}
         onClick={[Function]}
+        type="button"
       >
         <span
           className="snapguidist__arrow"
@@ -169,6 +177,7 @@ exports[`works when is fetching 1`] = `
         className="snapguidist__button"
         disabled={true}
         onClick={[Function]}
+        type="button"
       >
         Update
       </button>
@@ -176,6 +185,7 @@ exports[`works when is fetching 1`] = `
         className="snapguidist__button"
         disabled={true}
         onClick={[Function]}
+        type="button"
       >
         <span
           className="snapguidist__arrow"
