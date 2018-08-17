@@ -57,6 +57,16 @@ yarn install
 yarn start
 ```
 
+## Migrate to v4
+
+In v4, snapshots have been renamed to `.sg` (as opposed to `.snap`) to avoid conflicts with Jest, and improve compatibility with [create-react-app](https://github.com/facebook/create-react-app).
+Once upgraded to v4, please run `yarn test -u` to remove the old snapshots (new ones will be automatically generated on the next run)
+or, the following commands, to keep them:
+```sh
+cd .snapguidist/__snapshots/
+for old in *.snap; do git mv $old `basename $old .snap`.sg; done
+```
+
 ## Development
 
 > Any contribution to `snapguidist` is highly appreciated.
