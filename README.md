@@ -47,16 +47,6 @@ To add `snapguidist` to your `react-styleguidist` configuration, follow these st
   +});
   ```
 
-## Example
-
-To run the example, install the dependencies and start it:
-
-```bash
-cd example
-yarn install
-yarn start
-```
-
 ## Migrate to v4
 
 In v4, snapshots have been renamed to `.sg` (as opposed to `.snap`) to avoid conflicts with Jest, and improve compatibility with [create-react-app](https://github.com/facebook/create-react-app).
@@ -65,6 +55,16 @@ or, the following commands, to keep them:
 ```sh
 cd .snapguidist/__snapshots/
 for old in *.snap; do git mv $old `basename $old .snap`.sg; done
+```
+
+## Example
+
+To run the example, install the dependencies and start it:
+
+```bash
+cd example
+yarn install
+yarn start
 ```
 
 ## Development
